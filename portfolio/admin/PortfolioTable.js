@@ -129,6 +129,9 @@ function PortfolioTable({ getImageClicked, choosenPort }) {
         </thead>
 
         <tbody className="text-center">
+          <div className="text-center text-danger fs-5 my-2">
+            {error && "Unable to load record: " + error?.message}
+          </div>
           {choosenPort === "project"
             ? data?.getProjects?.map((item) => {
                 return (

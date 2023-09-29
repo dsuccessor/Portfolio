@@ -175,12 +175,13 @@ function PortfolioForm({ imagePreview, getPort }) {
         });
       })
       .catch((error) => {
-        toast.error(
-          `Failed to add record to ${portfolioType} DUE TO ${error}`,
-          {
-            position: toast.POSITION.TOP_LEFT,
-          }
-        );
+        error &&
+          toast.error(
+            `Failed to add record to ${portfolioType} DUE TO ${error}`,
+            {
+              position: toast.POSITION.TOP_LEFT,
+            }
+          );
       });
   };
   //   if (loading) return <NotifyToast message={"Processing..."} />;

@@ -44,7 +44,7 @@ function AdminTable({ choice }) {
             </tr>
           </thead>
           <div className="text-center text-danger fs-5 my-2">
-            {"Unable to load record: " + error?.message}
+            {error && "Unable to load record: " + error?.message}
           </div>
           <tbody className="">
             {data?.getAdmins.map((myAdmin) => {

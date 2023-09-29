@@ -21,9 +21,10 @@ function Admin({ data, listClick }) {
         });
       })
       .catch((error) => {
-        toast.error(`Failed to delete Admin record`, {
-          position: toast.POSITION.TOP_LEFT,
-        });
+        error &&
+          toast.error(`Failed to delete Admin record`, {
+            position: toast.POSITION.TOP_LEFT,
+          });
       });
   };
 
