@@ -5,7 +5,7 @@ const {
 } = require("@apollo/client");
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/portfolio",
+  uri: "http://classicportfolio-api.vercel.app/portfolio",
   cache: new InMemoryCache(),
 });
 
