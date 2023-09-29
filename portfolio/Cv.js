@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "./layout";
 import passport from "../../public/passport.jpeg";
 import Image from "next/image";
-import { client, ApolloProvider } from "./client";
+import { client, ApolloProvider } from "../libs/client";
 import AdminTable from "./AdminTable";
 import Link from "next/link";
 

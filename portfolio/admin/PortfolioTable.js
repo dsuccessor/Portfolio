@@ -12,7 +12,7 @@ import {
   DEL_PROJECT_BY_ID,
   DEL_SKILL_BY_ID,
   DEL_MEDIA_BY_ID,
-} from "../query/portfolioQueries";
+} from "../../libs/query/portfolioQueries";
 import { FaTrashAlt, FaGetPocket, FaGitAlt } from "react-icons/fa";
 import ToolTips from "../toast/ToolTips";
 
@@ -24,34 +24,36 @@ function PortfolioTable({ getImageClicked, choosenPort }) {
 
   const [DelLanguageById] = useMutation(delQuery);
 
-
-
   const deletePort = () => {
     DelLanguageById({
       variables: { id: delId },
       refetchQueries: [{ query: getQuery }],
     })
       .then((data, loading) => {
-        loading && 
-        <NotifyToast message={"Delete Processing..."} />;
+        loading && <NotifyToast message={"Delete Processing..."} />;
         data &&
-        toast.success(
-          `${delId} Record deleted succesfully from ${activeTable}`,
-          {
-            position: toast.POSITION.TOP_LEFT,
-          }
-        );
+          toast.success(
+            `${delId} Record deleted succesfully from ${activeTable}`,
+            {
+              position: toast.POSITION.TOP_LEFT,
+            }
+          );
       })
       .catch((error) => {
         error &&
-        toast.error(`Failed to delete ${activeTable} record DUE TO ${error}`, {
-          position: toast.POSITION.TOP_LEFT,
-        });
+          toast.error(
+            `Failed to delete ${activeTable} record DUE TO ${error}`,
+            {
+              position: toast.POSITION.TOP_LEFT,
+            }
+          );
       });
   };
 
   useEffect(() => {
-    choosenPort === undefined ? setActiveTable("Language") : setActiveTable(choosenPort)
+    choosenPort === undefined
+      ? setActiveTable("Language")
+      : setActiveTable(choosenPort);
     if (choosenPort === "media") {
       setGetQuery(GET_MEDIAS);
       setDelQuery(DEL_MEDIA_BY_ID);
@@ -111,7 +113,13 @@ function PortfolioTable({ getImageClicked, choosenPort }) {
             <th scope="col">
               {choosenPort === "media" ? "Handle" : "Description"}
             </th>
-            <th scope="col">{choosenPort === "project" ? "Tech" : choosenPort === "media" ? "Link" : "Level"}</th>
+            <th scope="col">
+              {choosenPort === "project"
+                ? "Tech"
+                : choosenPort === "media"
+                ? "Link"
+                : "Level"}
+            </th>
             <th scope="col">Created</th>
             <th scope="col">Updated</th>
             <th style={{ width: 10 }} scope="col">

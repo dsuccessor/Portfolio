@@ -1,18 +1,18 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 const { useQuery } = require("@apollo/client");
-import { GET_ADMIN } from "./query/adminQueries";
+import { GET_ADMIN } from "../libs/query/adminQueries";
 import Admin from "./Admin";
 import NotifyToast from "./toast/NotifyToast";
 
-function AdminTable({choice}) {
+function AdminTable({ choice }) {
   const { loading, error, data } = useQuery(GET_ADMIN);
   const [newAd, setNewAd] = useState();
   // const test = useQuery(GET_ADMIN);
   // console.log(test);
-  const checkClicked = (click)=>{
+  const checkClicked = (click) => {
     console.log(click);
     setNewAd(click);
-  }
+  };
 
   newAd && choice(newAd);
 
@@ -39,7 +39,13 @@ function AdminTable({choice}) {
           </thead>
           <tbody className="">
             {data.getAdmins.map((myAdmin) => {
-              return <Admin listClick={checkClicked} key={myAdmin.id} data={myAdmin} />;
+              return (
+                <Admin
+                  listClick={checkClicked}
+                  key={myAdmin.id}
+                  data={myAdmin}
+                />
+              );
             })}
           </tbody>
         </table>

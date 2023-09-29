@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import imageAvatar from "../../../public/imageAvatar.png";
+import imageAvatar from "@/public/imageAvatar.png";
 import {
   ADD_LANGUAGE,
   ADD_PROJECT,
@@ -10,7 +10,7 @@ import {
   GET_PROJECTS,
   GET_SKILLS,
   GET_MEDIAS,
-} from "../query/portfolioQueries";
+} from "@/libs/query/portfolioQueries";
 import { useMutation } from "@apollo/client";
 import NotifyToast from "../toast/NotifyToast";
 import { ToastContainer, toast } from "react-toastify";

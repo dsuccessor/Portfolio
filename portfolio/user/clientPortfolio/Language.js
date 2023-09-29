@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import html from "../../../../public/html.png";
-import css from "../../../../public/css.png";
-import js from "../../../../public/js.png";
-import python from "../../../../public/python.jpeg";
-import sql from "../../../../public/sql.png";
-import php from "../../../../public/php.png";
+import html from "@/public/html.png";
+import css from "@/public/css.png";
+import js from "@/public/js.png";
+import python from "@/public/python.jpeg";
+import sql from "@/public/sql.png";
+import php from "@/public/php.png";
 import { useQuery } from "@apollo/client";
-import { GET_LANGUAGES } from "../../query/portfolioQueries";
+import { GET_LANGUAGES } from "@/libs/query/portfolioQueries";
 
 function Language() {
   const [langRate, setLangRate] = useState({

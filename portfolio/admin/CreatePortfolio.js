@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Layout from "../layout";
-import { client, ApolloProvider } from "../client";
+import { client, ApolloProvider } from "../../libs/client";
 import PortfolioTable from "./PortfolioTable";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -25,16 +25,21 @@ function CreatePortfolio() {
           <div className="row p-3 border-0 justify-content-center">
             <PortfolioForm imagePreview={imageClicked} getPort={portChoice} />
             <div className="row pt-3 border-0 justify-content-center">
-        <h4 className="text-center text-secondary m-0">
-          {portType === undefined ? "Language's Record(s)" : `${portType}'s Record(s)`}
-        </h4>
-            <div className="col-12 col-sm-6 col-md-12 bg-info mt-2">
-              <div className="col-12 bg-light mb-3 mb-sm-0 p-3">
-                <PortfolioTable getImageClicked={listImage} choosenPort={portType} />
+              <h4 className="text-center text-secondary m-0">
+                {portType === undefined
+                  ? "Language's Record(s)"
+                  : `${portType}'s Record(s)`}
+              </h4>
+              <div className="col-12 col-sm-6 col-md-12 bg-info mt-2">
+                <div className="col-12 bg-light mb-3 mb-sm-0 p-3">
+                  <PortfolioTable
+                    getImageClicked={listImage}
+                    choosenPort={portType}
+                  />
+                </div>
               </div>
+              <ToastContainer />
             </div>
-            <ToastContainer />
-          </div>
           </div>
         </div>
       </ApolloProvider>

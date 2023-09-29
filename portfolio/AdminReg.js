@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Layout from "./layout";
-import { client, ApolloProvider } from "./client";
+import { client, ApolloProvider } from "../libs/client";
 import CreateAdmin from "./CreateAdmin";
 
 function AdminReg() {

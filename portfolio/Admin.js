@@ -1,12 +1,11 @@
 import React from "react";
 const { useMutation } = require("@apollo/client");
 import { FaTrashAlt, FaGetPocket, FaGitAlt } from "react-icons/fa";
-import { GET_ADMIN } from "./query/adminQueries";
-import { DEL_ADMIN, UPDATE_ADMIN } from "./mutation/adminMutation";
+import { GET_ADMIN } from "../libs/query/adminQueries";
+import { DEL_ADMIN, UPDATE_ADMIN } from "../libs/mutation/adminMutation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ToolTips from "./toast/ToolTips";
-
 
 function Admin({ data, listClick }) {
   const [adminDelete] = useMutation(DEL_ADMIN, {
@@ -65,7 +64,7 @@ function Admin({ data, listClick }) {
       <td style={{ width: "200px" }}>{data.createdAt}</td>
       <td style={{ width: "200px" }}>{data.updatedAt}</td>
       <td style={{ width: 10 }}>
-      <ToolTips optionButtons={showButtons}/>
+        <ToolTips optionButtons={showButtons} />
       </td>
     </tr>
   );

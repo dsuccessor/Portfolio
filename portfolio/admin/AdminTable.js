@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 const { useQuery } = require("@apollo/client");
-import { GET_ADMIN } from "./query/adminQueries";
-import Admin from "./Admin";
-import NotifyToast from "./toast/NotifyToast";
+import { GET_ADMIN } from "../../libs/query/adminQueries";
+import Admin from "../Admin";
+import NotifyToast from "../toast/NotifyToast";
 
 function AdminTable({ choice }) {
   const { loading, error, data } = useQuery(GET_ADMIN);

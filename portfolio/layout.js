@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import passport from "../../public/passport.jpeg";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import passport from "../public/passport.jpeg";
 import Link from "next/link";
 import {
   MdHome,
@@ -13,20 +13,22 @@ import {
   MdLibraryBooks,
 } from "react-icons/md";
 
+import { RiAdminFill } from "react-icons/ri";
+
 import { FcAssistant } from "react-icons/fc";
 
 import { AiOutlineLogout } from "react-icons/ai";
 
 function Layout({ children, pageTitle }) {
   useEffect(() => {
-    require("../../node_modules/bootstrap/dist/js/bootstrap.min");
+    require("bootstrap/dist/js/bootstrap.min");
   }, []);
 
   const activeUrl = usePathname();
 
   const sideBarMenus = [
     {
-      url: "/portfolio/dashboard",
+      url: "/home",
       icon: <MdHome />,
       title: "Dashboard",
     },
@@ -50,11 +52,16 @@ function Layout({ children, pageTitle }) {
       icon: <MdLibraryBooks />,
       title: "Curriculum Vitae",
     },
+    {
+      url: "/adminProfile",
+      icon: <RiAdminFill />,
+      title: "Admin",
+    },
   ];
 
   const bottomNav = [
     {
-      url: "/portfolio/admin/CreatePortfolio",
+      url: "/portfolioAdmin",
       icon: <MdSettingsSuggest />,
       title: "Settings",
     },

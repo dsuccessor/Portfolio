@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
 import Layout from "./layout";
 import Link from "next/link";
-import passport from "../../public/passport.jpeg";
+import passport from "@/public/passport.jpeg";
 
 import Image from "next/image";
 
-import kademyweb2 from "../../public/images/kademyweb2.png";
-import kademygroup from "../../public/images/kademygroup3.png";
-import kademyboth from "../../public/images/kademyboth.png";
-import kademyapp7 from "../../public/images/kademyapp7.png";
+import kademyweb2 from "@/public/images/kademyweb2.png";
+import kademygroup from "@/public/images/kademygroup3.png";
+import kademyboth from "@/public/images/kademyboth.png";
+import kademyapp7 from "@/public/images/kademyapp7.png";
 import Media from "./user/clientPortfolio/Media";
-import { client, ApolloProvider } from "./client";
+import { client, ApolloProvider } from "../libs/client";
 import Language from "./user/clientPortfolio/Language";
 import Project from "./user/clientPortfolio/Project";
 import Skill from "./user/clientPortfolio/Skill";
 
-function dashboard() {
+function Dashboard() {
   const [portChoice, setPortChoice] = useState("General");
   const [portArr, setPortArr] = useState(0);
   const [portSub, setPortSub] = useState("About Me");
@@ -219,10 +219,10 @@ function dashboard() {
                         <br /> SALAUDEEN
                       </h2>
                       <div className="col-10 text-secondary port-text-justify border-end pe-3 border-2 border-primary float-end">
-                        I'm a full-stack MERN (web & mobile app) developer with
-                        2 years of personal technical experience in developing a
-                        scalable and market-functioning web & mobile
-                        applications using javaScript libraies (react,
+                        I&#39;m a full-stack MERN (web & mobile app) developer
+                        with 2 years of personal technical experience in
+                        developing a scalable and market-functioning web &
+                        mobile applications using javaScript libraies (react,
                         react-native & node JS). <br />
                         Apart from my personal experience, I have work with
                         finTech companies in different capacities round the
@@ -270,7 +270,7 @@ function dashboard() {
                   : "d-none card text-center px-0 border-0 port-shadow-8"
               }
             >
-            <Skill />
+              <Skill />
             </div>
 
             {/* Media */}
@@ -281,7 +281,7 @@ function dashboard() {
                   : "d-none card text-center px-0 border-0 port-shadow-8"
               }
             >
-                <Media />
+              <Media />
             </div>
 
             {/* Objective */}
@@ -388,9 +388,7 @@ function dashboard() {
                   : "d-none card text-center px-0 border-0 port-shadow-8"
               }
             >
-            {
-              <Skill/>
-            }
+              {<Skill />}
             </div>
 
             {/* Profiles */}
@@ -591,4 +589,4 @@ function dashboard() {
   );
 }
 
-export default dashboard;
+export default Dashboard;

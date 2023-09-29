@@ -3,10 +3,10 @@ import Image from "next/image";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const { useMutation } = require("@apollo/client");
-import { ADD_ADMINS } from "./mutation/adminMutation";
+import { ADD_ADMINS } from "@/libs/mutation/adminMutation";
 import AdminTable from "./AdminTable";
-import { GET_ADMIN } from "./query/adminQueries";
-import imageAvatar from "../../public/imageAvatar.png";
+import { GET_ADMIN } from "@/libs/query/adminQueries";
+import imageAvatar from "@/public/imageAvatar.png";
 import NotifyToast from "./toast/NotifyToast";
 
 function CreateAdmin() {
@@ -283,7 +283,7 @@ function CreateAdmin() {
       </form>
       <div className="row p-3 border-0 justify-content-center">
         <h4 className="text-center text-secondary">
-          Administrator's Account(s)
+          Administrator&apos;s Account(s)
         </h4>
         <div className="col-12 col-sm-6 col-md-12 bg-primary">
           <div className="col-12 bg-light mb-3 mb-sm-0 p-2">

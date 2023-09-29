@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import cardBg from "../../../../public/cards/vecteezycopy.png";
-import { GET_MEDIAS } from "../../query/portfolioQueries";
+import cardBg from "@/public/cards/vecteezycopy.png";
+import { GET_MEDIAS } from "@/libs/query/portfolioQueries";
 import { ApolloClient, useQuery } from "@apollo/client";
-import { client } from "../../client";
+import { client } from "@/libs/client";
 import NotifyToast from "../../toast/NotifyToast";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -25,9 +25,9 @@ function Media() {
         <div className="container">
           <div className="row">
             {/* LinkedIn */}
-            {data?.getMedias?.map((item) => {
+            {data?.getMedias?.map((item, index) => {
               return (
-                <div className="col-12 col-lg-6 mb-lg-0">
+                <div className="col-12 col-lg-6 mb-lg-0" key={index}>
                   <div className="border border-0 card port-shadow-8 mb-3">
                     <Image
                       className="card-img-top"
