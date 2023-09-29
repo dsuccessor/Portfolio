@@ -3,6 +3,7 @@ const { useQuery } = require("@apollo/client");
 import { GET_ADMIN } from "../libs/query/adminQueries";
 import Admin from "./Admin";
 import NotifyToast from "./toast/NotifyToast";
+// import { ToastContainer, toast } from "react-toastify";
 
 function AdminTable({ choice }) {
   const { loading, error, data } = useQuery(GET_ADMIN);
@@ -17,8 +18,13 @@ function AdminTable({ choice }) {
   newAd && choice(newAd);
 
   if (loading) return <NotifyToast message={"Loading..."} />;
-  if (error) return <NotifyToast message={error.message} />;
-  if (!loading && !error) {
+  // if (error)
+  //   return toast.error(error.message, {
+  //     position: toast.POSITION.TOP_LEFT,
+  //   });
+
+  // <NotifyToast message={error.message} />;
+  if (!loading) {
     return (
       <div className="row px-3 overflow-scroll">
         <table className="table bg-white table-striped table-hover table-sm">
@@ -37,8 +43,11 @@ function AdminTable({ choice }) {
               </th>
             </tr>
           </thead>
+          <div className="text-center text-danger fs-5 my-2">
+            {"Unable to load record: " + error?.message}
+          </div>
           <tbody className="">
-            {data.getAdmins.map((myAdmin) => {
+            {data?.getAdmins.map((myAdmin) => {
               return (
                 <Admin
                   listClick={checkClicked}
@@ -49,6 +58,7 @@ function AdminTable({ choice }) {
             })}
           </tbody>
         </table>
+        {/* <ToastContainer /> */}
       </div>
     );
   }

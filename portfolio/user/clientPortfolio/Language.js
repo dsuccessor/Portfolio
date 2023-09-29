@@ -28,6 +28,12 @@ function Language() {
         <div className="row text-start align-items-center">
           {/* Progress Bar - Level */}
           <div className="col-12 col-md-6 pt-3 mb-5 ps-4 mb-lg-0">
+            {error && (
+              <div className="text-center text-danger fs-6 my-2">
+                {"Unable to load data: " + error?.message}
+              </div>
+            )}
+
             {data?.getLanguages?.map((item) => {
               return (
                 <div className="row mb-3" key={item?.id}>

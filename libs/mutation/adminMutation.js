@@ -4,7 +4,6 @@ const DEL_ADMIN = gql`
   mutation adminDelete($id: ID!) {
     deleteAdminById(id: $id) {
       id
-      adminId
       surname
       otherName
       email
@@ -29,7 +28,6 @@ const UPDATE_ADMIN = gql`
       adminType: $adminType
     ) {
       id
-      adminId
       surname
       otherName
       email
@@ -58,7 +56,6 @@ const ADD_ADMINS = gql`
       adminType: $adminType
     ) {
       id
-      adminId
       surname
       otherName
       email

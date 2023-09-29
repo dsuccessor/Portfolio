@@ -20,6 +20,11 @@ function Skill() {
         <div className="row text-start align-items-center">
           <div className="col-12 col-md-6 mb-5 mb-lg-0">
             <div className="row row-cols-3 justify-content-center">
+            {error && (
+              <div className="text-center text-danger fs-6 my-2">
+                {"Unable to load data: " + error?.message}
+              </div>
+            )}
               {data?.getSkills?.map((item) => {
                 return (
                   <div className="col" key={item?.id}>

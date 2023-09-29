@@ -4,7 +4,6 @@ const GET_ADMIN = gql`
   query getSchoolPortalDb {
     getAdmins {
       id
-      adminId
       surname
       otherName
       email

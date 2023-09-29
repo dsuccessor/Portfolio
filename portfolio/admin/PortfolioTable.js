@@ -71,12 +71,12 @@ function PortfolioTable({ getImageClicked, choosenPort }) {
 
   const { loading, data, error } = useQuery(getQuery);
 
-  {
-    error &&
-      toast.error(`Failed to fetch record DUE TO ${error}`, {
-        position: toast.POSITION.TOP_LEFT,
-      });
-  }
+  // {
+  //   error &&
+  //     toast.error(`Failed to fetch record DUE TO ${error}`, {
+  //       position: toast.POSITION.TOP_LEFT,
+  //     });
+  // }
 
   const showButtons = () => {
     return (
@@ -127,6 +127,7 @@ function PortfolioTable({ getImageClicked, choosenPort }) {
             </th>
           </tr>
         </thead>
+
         <tbody className="text-center">
           {choosenPort === "project"
             ? data?.getProjects?.map((item) => {

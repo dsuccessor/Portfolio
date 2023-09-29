@@ -24,6 +24,11 @@ function Media() {
       <div className="card-body bg-light">
         <div className="container">
           <div className="row">
+            {error && (
+              <div className="text-center text-danger fs-6 my-2">
+                {"Unable to load data: " + error?.message}
+              </div>
+            )}
             {/* LinkedIn */}
             {data?.getMedias?.map((item, index) => {
               return (

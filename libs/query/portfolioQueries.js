@@ -28,7 +28,6 @@ const GET_LANGUAGES = gql`
   query {
     getLanguages {
       id
-      languageId
       name
       description
       logo
@@ -55,7 +54,6 @@ const DEL_LANGUAGE_BY_ID = gql`
   mutation DelLanguageById($id: ID!) {
     deleteLanguageById(id: $id) {
       id
-      languageId
       name
       description
       logo
@@ -120,7 +118,6 @@ const DEL_PROJECT_BY_ID = gql`
   mutation DelProjectById($id: ID!) {
     deleteProjectById(id: $id) {
       id
-      projectId
       name
       description
       flyer
@@ -185,7 +182,6 @@ const DEL_SKILL_BY_ID = gql`
   mutation DelSkillById($id: ID!) {
     deleteSkillById(id: $id) {
       id
-      skillId
       name
       description
       logo
@@ -245,7 +241,6 @@ const DEL_MEDIA_BY_ID = gql`
   mutation DelMediaById($id: ID!) {
     deleteMediaById(id: $id) {
       id
-      mediaId
       name
       handle
       logo

@@ -14,6 +14,11 @@ function Project() {
       </div>
       <div className="card-body">
         <div className="row gy-3 text-start">
+          {error && (
+            <div className="text-center text-danger fs-6 my-2">
+              {"Unable to load data: " + error?.message}
+            </div>
+          )}
           {data?.getProjects?.map((item) => {
             return (
               <div className="col-12 col-md-6 col-lg-4" key={item?.id}>
