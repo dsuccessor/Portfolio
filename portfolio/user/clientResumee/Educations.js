@@ -28,12 +28,9 @@ function Educations() {
                   {toTitleCase(edu?.school)}
                 </h5>
                 <p className="card-text">{toTitleCase(edu?.qualification)}</p>
-                </div>
-                <div className="card-body text-end bg-primary">
-                <a
-                  href="#"
-                  className="btn btn-sm btn-outline-light mb-2 me-2"
-                >
+              </div>
+              <div className="card-body text-end bg-primary">
+                <a href="#" className="btn btn-sm btn-outline-light mb-2 me-2">
                   {toTitleCase(edu?.course)}
                 </a>
                 <a href="#" className="btn btn-sm btn-outline-light mb-2">

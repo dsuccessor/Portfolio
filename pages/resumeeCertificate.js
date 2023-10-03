@@ -1,5 +1,5 @@
 import React from "react";
-import Certificate from "@/portfolio/user/clientPortfolio/Certificate";
+import Certificate from "@/portfolio/user/clientResumee/Certificate";
 
 function ResumeeCertificate() {
   return (
