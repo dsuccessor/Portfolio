@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { GET_CERTIFICATES } from "@/libs/query/resumeeQueries";
 const { useQuery } = require("@apollo/client");
+import { GET_CERTIFICATES } from "@/libs/query/resumeeQueries";
+import NotifyToast from "@/portfolio/toast/NotifyToast";
 import { toTitleCase } from "@/libs/titleCase";
 
-function Certificate() {
+function Certifications() {
   const { loading, data, error } = useQuery(GET_CERTIFICATES);
+  error && <NotifyToast message={JSON.stringify(error)} />;
   return (
     <div className="container">
       <div className="row">
@@ -14,9 +16,9 @@ function Certificate() {
             <div className="col-4 mb-3">
               <div className="card border-light port-shadow-8">
                 <div class="card-body">
-                  <h5 className="card-title text-primary">
+                  <h6 className="card-title text-primary">
                     {toTitleCase(cert?.certification)}
-                  </h5>
+                  </h6>
                   <div className="px-5">
                     <p className="card-text mb-2 text-dark fs-14 text-bg-light mx-5">
                       {toTitleCase(cert?.period)}
@@ -32,9 +34,9 @@ function Certificate() {
                   alt="..."
                 />
                 <div class="card-body">
-                  <h5 className="card-title text-primary">
+                  <h6 className="card-title text-primary">
                     {toTitleCase(cert?.programme)}
-                  </h5>
+                  </h6>
                 </div>
               </div>
             </div>
@@ -45,4 +47,4 @@ function Certificate() {
   );
 }
 
-export default Certificate;
+export default Certifications;

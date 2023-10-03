@@ -14,10 +14,10 @@ import { client, ApolloProvider } from "../libs/client";
 import Language from "./user/clientPortfolio/Language";
 import Project from "./user/clientPortfolio/Project";
 import Skill from "./user/clientPortfolio/Skill";
-import ResumeeObjective from "@/pages/resumeeObjective";
-import ResumeeEducation from "@/pages/resumeeEducation";
-import ResumeeExperience from "@/pages/resumeeExperience";
-import ResumeeCertificate from "@/pages/resumeeCertificate";
+import Objectives from "./user/clientResumee/Objectives";
+import Educations from "./user/clientResumee/Educations";
+import Experiences from "./user/clientResumee/Experiences";
+import Certifications from "./user/clientResumee/Certifications";
 
 function Dashboard() {
   const [portChoice, setPortChoice] = useState("General");
@@ -299,7 +299,7 @@ function Dashboard() {
               <div className="card-header bg-white fw-bold">
                 #Professional Summary
               </div>
-              <div className="card-body bg-light">{<ResumeeObjective />}</div>
+              <div className="card-body bg-light">{<Objectives />}</div>
             </div>
 
             {/* Education */}
@@ -314,7 +314,7 @@ function Dashboard() {
                 #Educational Background
               </div>
               <div className="card-body bg-light">
-                <ResumeeEducation />
+                <Educations />
               </div>
             </div>
 
@@ -327,7 +327,7 @@ function Dashboard() {
               }
             >
               <div className="card-header bg-white fw-bold">#Experience</div>
-              <div className="card-body bg-light">{<ResumeeExperience />}</div>
+              <div className="card-body bg-light">{<Experiences />}</div>
             </div>
 
             {/* Language */}
@@ -363,7 +363,7 @@ function Dashboard() {
               }
             >
               <div className="card-header bg-white fw-bold">#Certificate</div>
-              <div className="card-body">{<ResumeeCertificate />}</div>
+              <div className="card-body">{<Certifications />}</div>
             </div>
             {/* Profiles */}
             <div

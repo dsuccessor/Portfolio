@@ -12,7 +12,7 @@ function Experiences() {
     }
     return str?.join(" ");
   };
-  const { loadConfig, data, error } = useQuery(GET_EXPERIENCES);
+  const { loading, data, error } = useQuery(GET_EXPERIENCES);
   return (
     <div className="row justify-content-start">
       {data?.getExperiences?.map((exp) => {
