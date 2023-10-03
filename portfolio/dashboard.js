@@ -14,6 +14,10 @@ import { client, ApolloProvider } from "../libs/client";
 import Language from "./user/clientPortfolio/Language";
 import Project from "./user/clientPortfolio/Project";
 import Skill from "./user/clientPortfolio/Skill";
+import ResumeeObjective from "@/pages/resumeeObjective";
+import ResumeeEducation from "@/pages/resumeeEducation";
+import ResumeeExperience from "@/pages/resumeeExperience";
+import ResumeeCertificate from "@/pages/resumeeCertificate";
 
 function Dashboard() {
   const [portChoice, setPortChoice] = useState("General");
@@ -35,7 +39,7 @@ function Dashboard() {
     {
       name: "Resumee",
       type: "Resumee",
-      data: ["Objective", "Education", "Experience", "Skill"],
+      data: ["Objective", "Education", "Experience", "Certificate"],
     },
     {
       name: "CV",
@@ -292,20 +296,10 @@ function Dashboard() {
                   : "d-none card text-center px-0 border-0 port-shadow-8"
               }
             >
-              <div className="card-header bg-white">Objective</div>
-              <div className="card-body">
-                <h5 className="card-title">Special title treatment</h5>
-                <p className="card-text">
-                  With supporting text below as a natural lead-in to additional
-                  content.
-                </p>
-                <a href="#" className="btn btn-primary">
-                  Go somewhere
-                </a>
+              <div className="card-header bg-white fw-bold">
+                #Professional Summary
               </div>
-              <div className="card-footer bg-white text-muted border-0">
-                2 days ago
-              </div>
+              <div className="card-body bg-light">{<ResumeeObjective />}</div>
             </div>
 
             {/* Education */}
@@ -316,19 +310,11 @@ function Dashboard() {
                   : "d-none card text-center px-0 border-0 port-shadow-8"
               }
             >
-              <div className="card-header bg-white">Education</div>
-              <div className="card-body">
-                <h5 className="card-title">Special title treatment</h5>
-                <p className="card-text">
-                  With supporting text below as a natural lead-in to additional
-                  content.
-                </p>
-                <a href="#" className="btn btn-primary">
-                  Go somewhere
-                </a>
+              <div className="card-header bg-white fw-bold">
+                #Educational Background
               </div>
-              <div className="card-footer bg-white text-muted border-0">
-                2 days ago
+              <div className="card-body bg-light">
+                <ResumeeEducation />
               </div>
             </div>
 
@@ -340,20 +326,8 @@ function Dashboard() {
                   : "d-none card text-center px-0 border-0 port-shadow-8"
               }
             >
-              <div className="card-header bg-white">Experience</div>
-              <div className="card-body">
-                <h5 className="card-title">Special title treatment</h5>
-                <p className="card-text">
-                  With supporting text below as a natural lead-in to additional
-                  content.
-                </p>
-                <a href="#" className="btn btn-primary">
-                  Go somewhere
-                </a>
-              </div>
-              <div className="card-footer bg-white text-muted border-0">
-                2 days ago
-              </div>
+              <div className="card-header bg-white fw-bold">#Experience</div>
+              <div className="card-body bg-light">{<ResumeeExperience />}</div>
             </div>
 
             {/* Language */}
@@ -380,17 +354,17 @@ function Dashboard() {
               </div>
             </div>
 
-            {/* Skill */}
+            {/* Certificate */}
             <div
               className={
-                portSub === "Skill"
+                portSub === "Certificate"
                   ? "card text-center px-0 border-0 port-shadow-8"
                   : "d-none card text-center px-0 border-0 port-shadow-8"
               }
             >
-              {<Skill />}
+              <div className="card-header bg-white fw-bold">#Certificate</div>
+              <div className="card-body">{<ResumeeCertificate />}</div>
             </div>
-
             {/* Profiles */}
             <div
               className={
@@ -423,7 +397,7 @@ function Dashboard() {
                   : "d-none card text-center px-0 border-0 port-shadow-8"
               }
             >
-              <div className="card-header bg-white">Educations</div>
+              <div className="card-header bg-body">Educations</div>
               <div className="card-body">
                 <h5 className="card-title">Special title treatment</h5>
                 <p className="card-text">
