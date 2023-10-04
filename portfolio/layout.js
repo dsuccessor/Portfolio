@@ -61,7 +61,7 @@ function Layout({ children, pageTitle }) {
 
   const bottomNav = [
     {
-      url: "/portfolioAdmin",
+      url: "/login",
       icon: <MdSettingsSuggest />,
       title: "Settings",
     },

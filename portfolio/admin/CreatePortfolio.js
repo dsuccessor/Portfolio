@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Layout from "../layout";
+import AdminDashboard from "./AdminDashboard";
 import { client, ApolloProvider } from "../../libs/client";
 import PortfolioTable from "./PortfolioTable";
 import { ToastContainer, toast } from "react-toastify";
@@ -19,7 +19,7 @@ function CreatePortfolio() {
   };
 
   return (
-    <Layout pageTitle={"Admin | Portfolio Management"}>
+    <AdminDashboard pageTitle={"Admin | Portfolio Management"}>
       <ApolloProvider client={client}>
         <div className="container-fluid py-1 pe-4">
           <div className="row p-3 border-0 justify-content-center">
@@ -43,7 +43,7 @@ function CreatePortfolio() {
           </div>
         </div>
       </ApolloProvider>
-    </Layout>
+    </AdminDashboard>
   );
 }
 
