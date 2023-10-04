@@ -5,13 +5,20 @@ import NotifyToast from "@/portfolio/toast/NotifyToast";
 
 function Objectives() {
   const toTitleCase = (str) => {
-   const newStr = str.toLowerCase().split(', ').map((word)=>{
+    const newStr = str
+      .toLowerCase()
+      .split(", ")
+      .map((word) => {
         return word.replace(word[0], word[0].toUpperCase());
-      }).join(', ');
+      })
+      .join(", ");
 
-      return newStr.split('. ').map((word)=>{
+    return newStr
+      .split(". ")
+      .map((word) => {
         return word.replace(word[0], word[0].toUpperCase());
-      }).join('. ');
+      })
+      .join(". ");
   };
 
   const { loading, data, error } = useQuery(GET_OBJECTIVES);
@@ -53,10 +60,7 @@ function Objectives() {
     <div>
       {pageRecords?.map((obj, index) => {
         return (
-          <div
-            className="accordion mb-3"
-            id="accordionExample"
-          >
+          <div className="accordion mb-3" id="accordionExample">
             <div className="accordion-item border-light port-shadow-8">
               <h2 className="accordion-header text-white" id="headingOne">
                 <button
@@ -76,7 +80,7 @@ function Objectives() {
                 aria-labelledby="headingOne"
                 data-bs-parent="#accordionExample"
               >
-                <div className="accordion-body text-start">
+                <div className="accordion-body port-text-justify">
                   {toTitleCase(obj?.summary)}
                 </div>
               </div>

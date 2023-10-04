@@ -14,10 +14,10 @@ function Experiences() {
   };
   const { loading, data, error } = useQuery(GET_EXPERIENCES);
   return (
-    <div className="row justify-content-start">
+    <div className="row justify-content-evenly">
       {data?.getExperiences?.map((exp) => {
         return (
-          <div className="rounded-5 card col-4 mx-2 border-light port-shadow-8">
+          <div className="rounded-5 card col-5 m-2 border-light port-shadow-8">
             <div className="row">
               <div className="col bg-primary text-white">
                 <div className="card-body text-end pe-0 ps-2 text-white">

@@ -14,32 +14,26 @@ function Educations() {
   };
   const { loading, data, error } = useQuery(GET_EDUCATIONS);
   return (
-    <div className="row justify-content-start">
+    <div className="row justify-content-evenly">
       {data?.getEducations?.map((edu, index) => {
         return (
-          <div className="col-4">
-            <div
-              className="card border-light port-shadow-8"
-              style={{ width: "23rem" }}
-            >
-              {/* <img src="..." className="card-img-top" alt="..."/> */}
-              <div className="card-body text-end border-bottom">
-                <h5 className="card-title text-primary text-opacity-75">
-                  {toTitleCase(edu?.school)}
-                </h5>
-                <p className="card-text">{toTitleCase(edu?.qualification)}</p>
-              </div>
-              <div className="card-body text-end bg-primary">
-                <a href="#" className="btn btn-sm btn-outline-light mb-2 me-2">
-                  {toTitleCase(edu?.course)}
-                </a>
-                <a href="#" className="btn btn-sm btn-outline-light mb-2">
-                  {toTitleCase(edu?.grade)}
-                </a>
-                <a href="#" className="btn btn-sm btn-outline-light mb-2">
-                  {toTitleCase(edu?.period)}
-                </a>
-              </div>
+          <div className="col-8 col-sm-5 col-lg-4 col-xl-3 px-0 my-2 mx-1 card border-light port-shadow-8">
+            <div className="card-body text-end border-bottom">
+              <h5 className="card-title text-primary text-opacity-75">
+                {toTitleCase(edu?.school)}
+              </h5>
+              <p className="card-text">{toTitleCase(edu?.qualification)}</p>
+            </div>
+            <div className="card-body text-end bg-primary">
+              <a href="#" className="btn btn-sm btn-outline-light mb-2 me-2">
+                {toTitleCase(edu?.course)}
+              </a>
+              <a href="#" className="btn btn-sm btn-outline-light mb-2 me-3">
+                {toTitleCase(edu?.grade)}
+              </a>
+              <a href="#" className="btn btn-sm btn-outline-light mb-2 me-2">
+                {toTitleCase(edu?.period)}
+              </a>
             </div>
           </div>
         );

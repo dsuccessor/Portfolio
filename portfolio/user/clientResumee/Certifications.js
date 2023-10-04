@@ -10,20 +10,18 @@ function Certifications() {
   error && <NotifyToast message={JSON.stringify(error)} />;
   return (
     <div className="container">
-      <div className="row">
+      <div className="row justify-content-evenly">
         {data?.getCertifications?.map((cert, index) => {
           return (
-            <div className="col-4 mb-3">
+            <div className="col-10 col-sm-6 col-lg-4 mb-3">
               <div className="card border-light port-shadow-8">
                 <div class="card-body">
                   <h6 className="card-title text-primary">
                     {toTitleCase(cert?.certification)}
                   </h6>
-                  <div className="px-5">
-                    <p className="card-text mb-2 text-dark fs-14 text-bg-light mx-5">
-                      {toTitleCase(cert?.period)}
-                    </p>
-                  </div>
+                  <p className="card-text mb-2 text-dark fs-14 text-bg-light mx-5">
+                    {toTitleCase(cert?.period)}
+                  </p>
                 </div>
                 <Image
                   src={cert?.certificate}
