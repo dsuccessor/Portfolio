@@ -201,8 +201,8 @@ function Dashboard() {
                       <div className="text-center mt-4">
                         <Image
                           src={passport}
-                          width={350}
-                          height={350}
+                          width={300}
+                          height={300}
                           alt="logo"
                           className="rounded-circle border border-1 border-primary"
                         />

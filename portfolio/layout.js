@@ -76,7 +76,7 @@ function Layout({ children, pageTitle }) {
     <div className="vh-100 overflow-hidden">
       <div className="row">
         {/* Sidebar */}
-        <div className="d-none d-xl-block col-2 bg-dark px-0 vh-100 overflow-scroll">
+        <div className="d-none d-xl-block col-2 bg-dark px-0 vh-100">
           <nav className="nav flex-column h-100">
             {/* SideBar Logo */}
             <div className="container h-100">
@@ -96,7 +96,7 @@ function Layout({ children, pageTitle }) {
 
               {/* Side Bar Navigations */}
               <div className="row">
-                <div className="col-12 my-5">
+                <div className="col-12 my-3">
                   {sideBarMenus?.map((item, index) => {
                     return (
                       <Link
@@ -131,9 +131,9 @@ function Layout({ children, pageTitle }) {
               </div>
 
               {/* Side Bar Bottom Navigations */}
-              <div className="row align-items-end mt-5">
-                <div className="col-12 my-5" />
-                <div className="col-12 mt-5 pt-4 border-1 border-top border-light">
+              <div className="row align-items-end">
+                <div className="col-12" />
+                <div className="col-12 pt-4 border-1 border-top border-light">
                   {bottomNav?.map((item, index) => {
                     return (
                       <Link
