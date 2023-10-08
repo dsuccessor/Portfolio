@@ -145,18 +145,6 @@ function Objectives() {
         </div>
       </div>
     </div>
-
-    // <div>
-    //   <div>{data?.getObjectives[currentPage]?.version}</div>
-    //   <div>{data?.getObjectives[currentPage]?.summary}</div>
-    //   <div>{data?.getObjectives[currentPage]?.logo}</div>
-    //   <div>
-    //     <p>"Total Page = " {allPages}</p>
-    //     <p>"Current Page = " {pageNo}</p>
-    //     <button className="btn btn-success" onClick={next} disabled={pageNo == allPages} hidden={pageNo == allPages}>Next</button>
-    //      <button className="btn btn-danger" onClick={prev} disabled={pageNo == 1} hidden={pageNo == 1}>Prev</button>
-    //   </div>
-    // </div>
   );
 }
 
