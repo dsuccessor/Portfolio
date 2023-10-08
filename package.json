@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.8.1",
+    "@react-spring/web": "^9.7.3",
     "bootstrap": "^5.2.3",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.13",

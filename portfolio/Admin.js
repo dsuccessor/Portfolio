@@ -3,9 +3,10 @@ const { useMutation } = require("@apollo/client");
 import { FaTrashAlt, FaGetPocket, FaGitAlt } from "react-icons/fa";
 import { GET_ADMIN } from "../libs/query/adminQueries";
 import { DEL_ADMIN, UPDATE_ADMIN } from "../libs/mutation/adminMutation";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ToolTips from "./toast/ToolTips";
+import { toTitleCase } from "@/libs/titleCase";
 
 function Admin({ data, listClick }) {
   const [adminDelete] = useMutation(DEL_ADMIN, {
@@ -15,10 +16,13 @@ function Admin({ data, listClick }) {
 
   const deleteAdmin = () => {
     adminDelete()
-      .then((data) => {
-        toast.success(`Admin ${data?.surname} Record deleted succesfully`, {
-          position: toast.POSITION.TOP_LEFT,
-        });
+      .then(({ data }) => {
+        toast.success(
+          `Admin ${data?.deleteAdminById?.email} Record deleted succesfully`,
+          {
+            position: toast.POSITION.TOP_LEFT,
+          }
+        );
       })
       .catch((error) => {
         error &&
@@ -56,15 +60,14 @@ function Admin({ data, listClick }) {
         //console.log(data?.passport);
       }}
     >
-      <td>{data.id}</td>
-      <td>{data.adminId}</td>
-      <td>{data.surname}</td>
-      <td style={{ width: "400px" }}>{data.otherName}</td>
-      <td>{data.email}</td>
-      <td>{data.adminType}</td>
-      <td style={{ width: "200px" }}>{data.createdAt}</td>
-      <td style={{ width: "200px" }}>{data.updatedAt}</td>
-      <td style={{ width: 10 }}>
+      <td className="py-2 ps-3">{data.userId}</td>
+      <td className="py-2 ps-3">{toTitleCase(data.surname)}</td>
+      <td className="py-2 ps-3">{toTitleCase(data.otherName)}</td>
+      <td className="py-2 ps-3">{toTitleCase(data.email)}</td>
+      <td className="py-2 ps-3">{toTitleCase(data.role)}</td>
+      <td className="py-2 ps-3">{data.createdAt}</td>
+      <td className="py-2 ps-3">{data.updatedAt}</td>
+      <td className="pb-2">
         <ToolTips optionButtons={showButtons} />
       </td>
     </tr>

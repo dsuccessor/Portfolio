@@ -7,14 +7,13 @@ function NotifyToast({ message }) {
   const toggleShowA = () => setShowA(!showA);
 
   return (
-    <Toast show={showA} className="p-0 loader-position">
-      <Toast.Header className="bg-info">
+    <Toast show={showA} className="p-0 loader-position border-light port-shadow-8">
+      <Toast.Header className="bg-primary">
         <strong className="me-auto text-white">
           Waiting for server response
         </strong>
-        <small></small>
       </Toast.Header>
-      <Toast.Body className="text-warning text-center">
+      <Toast.Body className="text-primary bg-white text-center">
         {message}
         <div
           className="ps-5 my-3"

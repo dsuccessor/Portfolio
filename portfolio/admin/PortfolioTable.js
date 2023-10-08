@@ -3,6 +3,7 @@ const { useQuery, useMutation } = require("@apollo/client");
 import NotifyToast from "../toast/NotifyToast";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { toTitleCase } from "@/libs/titleCase";
 import {
   GET_LANGUAGES,
   GET_PROJECTS,
@@ -102,33 +103,39 @@ function PortfolioTable({ getImageClicked, choosenPort }) {
   return (
     <div className="row px-3 overflow-scroll">
       {loading && <NotifyToast message={"Processing, Please wait...."} />}
-      <table className="table bg-white table-striped table-hover table-sm">
-        <thead className="text-center">
+      <table className="table bg-white table-striped table-hover">
+        <thead className="text-start">
           <tr className="bg-info opacity-75 text-white">
-            <th scope="col">Id</th>
-            {/* <th scope="col">
-              {choosenPort ? `${choosenPort} Id` : "Lang. Id"}
-            </th> */}
-            <th scope="col">Name</th>
-            <th scope="col">
+            <th className="py-3 ps-3" scope="col" style={{ width: "270px" }}>
+              Id
+            </th>
+
+            <th className="py-3 ps-3" scope="col">
+              Name
+            </th>
+            <th className="py-3 ps-3" scope="col">
               {choosenPort === "media" ? "Handle" : "Description"}
             </th>
-            <th scope="col">
+            <th className="py-3 ps-3" scope="col">
               {choosenPort === "project"
                 ? "Tech"
                 : choosenPort === "media"
                 ? "Link"
                 : "Level"}
             </th>
-            <th scope="col">Created</th>
-            <th scope="col">Updated</th>
-            <th style={{ width: 10 }} scope="col">
+            <th className="py-3 ps-3" scope="col">
+              Created
+            </th>
+            <th className="py-3 ps-3" scope="col">
+              Updated
+            </th>
+            <th className="py-3" style={{ width: 10 }} scope="col">
               Action
             </th>
           </tr>
         </thead>
 
-        <tbody className="text-center">
+        <tbody className="text-start">
           <div className="text-center text-danger fs-5 my-2">
             {error && "Unable to load record: " + error?.message}
           </div>
@@ -143,13 +150,16 @@ function PortfolioTable({ getImageClicked, choosenPort }) {
                       setDelId(item?.id);
                     }}
                   >
-                    <td>{item?.id}</td>
-                    {/* <td>{item?.projectId}</td> */}
-                    <td>{item?.name}</td>
-                    <td style={{ width: "400px" }}>{item?.description}</td>
-                    <td>{item?.technologies?.length}</td>
-                    <td style={{ width: "200px" }}>{item?.createdAt}</td>
-                    <td style={{ width: "200px" }}>{item?.updatedAt}</td>
+                    <td className="ps-3" style={{ width: "270px" }}>
+                      {item?.id}
+                    </td>
+                    <td className="ps-3">{toTitleCase(item?.name)}</td>
+                    <td className="ps-3">{item?.description?.length}</td>
+                    <td className="ps-3">
+                      {toTitleCase(item?.technologies?.toString())}
+                    </td>
+                    <td className="ps-3">{item?.createdAt}</td>
+                    <td className="ps-3">{item?.updatedAt}</td>
                     <td style={{ width: 10 }}>
                       <ToolTips optionButtons={showButtons} />
                     </td>
@@ -167,13 +177,14 @@ function PortfolioTable({ getImageClicked, choosenPort }) {
                       setDelId(item?.id);
                     }}
                   >
-                    <td>{item?.id}</td>
-                    {/* <td>{item?.skillId}</td> */}
-                    <td>{item?.name}</td>
-                    <td style={{ width: "400px" }}>{item?.description}</td>
-                    <td>{item?.level}</td>
-                    <td style={{ width: "200px" }}>{item?.createdAt}</td>
-                    <td style={{ width: "200px" }}>{item?.updatedAt}</td>
+                    <td className="ps-3" style={{ width: "270px" }}>
+                      {item?.id}
+                    </td>
+                    <td className="ps-3">{toTitleCase(item?.name)}</td>
+                    <td className="ps-3">{item?.description?.length}</td>
+                    <td className="ps-3">{toTitleCase(item?.level)}</td>
+                    <td className="ps-3">{item?.createdAt}</td>
+                    <td className="ps-3">{item?.updatedAt}</td>
                     <td style={{ width: 10 }}>
                       <ToolTips optionButtons={showButtons} />
                     </td>
@@ -191,13 +202,14 @@ function PortfolioTable({ getImageClicked, choosenPort }) {
                       setDelId(item?.id);
                     }}
                   >
-                    <td>{item?.id}</td>
-                    {/* <td>{item?.mediaId}</td> */}
-                    <td>{item?.name}</td>
-                    <td style={{ width: "400px" }}>{item?.handle}</td>
-                    <td>{item?.link}</td>
-                    <td style={{ width: "200px" }}>{item?.createdAt}</td>
-                    <td style={{ width: "200px" }}>{item?.updatedAt}</td>
+                    <td className="ps-3" style={{ width: "270px" }}>
+                      {item?.id}
+                    </td>
+                    <td className="ps-3">{toTitleCase(item?.name)}</td>
+                    <td className="ps-3">{toTitleCase(item?.handle)}</td>
+                    <td className="ps-3">{toTitleCase(item?.link)}</td>
+                    <td className="ps-3">{item?.createdAt}</td>
+                    <td className="ps-3">{item?.updatedAt}</td>
                     <td style={{ width: 10 }}>
                       <ToolTips optionButtons={showButtons} />
                     </td>
@@ -214,13 +226,14 @@ function PortfolioTable({ getImageClicked, choosenPort }) {
                       setDelId(item?.id);
                     }}
                   >
-                    <td>{item?.id}</td>
-                    {/* <td>{item?.languageId}</td> */}
-                    <td>{item?.name}</td>
-                    <td style={{ width: "400px" }}>{item?.description}</td>
-                    <td>{item?.level}</td>
-                    <td style={{ width: "200px" }}>{item?.createdAt}</td>
-                    <td style={{ width: "200px" }}>{item?.updatedAt}</td>
+                    <td className="ps-3" style={{ width: "270px" }}>
+                      {item?.id}
+                    </td>
+                    <td className="ps-3">{toTitleCase(item?.name)}</td>
+                    <td className="ps-3">{item?.description?.length}</td>
+                    <td className="ps-3">{toTitleCase(item?.level)}</td>
+                    <td className="ps-3">{item?.createdAt}</td>
+                    <td className="ps-3">{item?.updatedAt}</td>
                     <td style={{ width: 10 }}>
                       <ToolTips optionButtons={showButtons} />
                     </td>

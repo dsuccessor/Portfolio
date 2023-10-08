@@ -4,10 +4,11 @@ const DEL_ADMIN = gql`
   mutation adminDelete($id: ID!) {
     deleteAdminById(id: $id) {
       id
+      adminId
       surname
       otherName
       email
-      adminType
+      role
       createdAt
       updatedAt
     }
@@ -19,19 +20,15 @@ const UPDATE_ADMIN = gql`
     $id: ID!
     $email: String!
     $password: String!
-    $adminType: updateAdminType
+    $role: updateRole
   ) {
-    updateAdminById(
-      id: $id
-      email: $email
-      password: $password
-      adminType: $adminType
-    ) {
+    updateAdminById(id: $id, email: $email, password: $password, role: $role) {
       id
+      adminId
       surname
       otherName
       email
-      adminType
+      role
       createdAt
       updatedAt
     }
@@ -45,7 +42,7 @@ const ADD_ADMINS = gql`
     $email: String!
     $passport: String!
     $password: String!
-    $adminType: addAdminType
+    $role: addRole
   ) {
     addAdmin(
       surname: $surname
@@ -53,13 +50,14 @@ const ADD_ADMINS = gql`
       email: $email
       passport: $passport
       password: $password
-      adminType: $adminType
+      role: $role
     ) {
       id
+      adminId
       surname
       otherName
       email
-      adminType
+      role
       createdAt
       updatedAt
     }

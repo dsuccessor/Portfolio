@@ -1,13 +1,14 @@
 import { gql } from "@apollo/client";
 
 const GET_ADMIN = gql`
-  query getSchoolPortalDb {
-    getAdmins {
+  query {
+    getAdminUsers {
       id
+      userId
       surname
       otherName
       email
-      adminType
+      role
       passport
       createdAt
       updatedAt
@@ -15,4 +16,20 @@ const GET_ADMIN = gql`
   }
 `;
 
-export { GET_ADMIN };
+const BULK_ADD_USERS = gql`
+  query bulkAdmin {
+    bulkAddUsers {
+      id
+      userId
+      surname
+      otherName
+      email
+      role
+      passport
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+export { GET_ADMIN, BULK_ADD_USERS };

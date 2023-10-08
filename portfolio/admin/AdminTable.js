@@ -28,17 +28,19 @@ function AdminTable({ choice }) {
     return (
       <div className="row px-3 overflow-scroll">
         <table className="table bg-white table-striped table-hover table-sm">
-          <thead className="">
-            <tr className="bg-primary opacity-75 text-white">
-              <th scope="col">Id</th>
-              <th scope="col">Admin Id</th>
-              <th scope="col">Surname</th>
-              <th scope="col">Other Name</th>
-              <th scope="col">Email Address</th>
-              <th scope="col">Admin Level</th>
-              <th scope="col">Created</th>
-              <th scope="col">Updated</th>
-              <th style={{ width: 10 }} scope="col">
+          <thead className="py-3">
+            <tr className="bg-primary opacity-75 text-white py-3">
+              {/* <th scope="col">Id</th> */}
+              <th className="py-3" scope="col">Admin Id</th>
+              <th className="py-3" scope="col">Surname</th>
+              <th className="py-3" scope="col">Other Name</th>
+              <th className="py-3" scope="col">Email Address</th>
+              <th className="py-3" scope="col">Admin Level</th>
+              <th className="py-3" scope="col">Created</th>
+              <th className="py-3" scope="col">Updated</th>
+              <th 
+              // style={{ width: 10 }} 
+              scope="col">
                 Action
               </th>
             </tr>
@@ -47,7 +49,7 @@ function AdminTable({ choice }) {
             {error && "Unable to load record: " + error?.message}
           </div>
           <tbody className="">
-            {data.getAdmins.map((myAdmin) => {
+            {data?.getAdminUsers.map((myAdmin) => {
               return (
                 <Admin
                   listClick={checkClicked}

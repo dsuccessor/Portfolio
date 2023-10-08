@@ -282,9 +282,6 @@ function CreateAdmin() {
         </div>
       </form>
       <div className="row p-3 border-0 justify-content-center">
-        <h4 className="text-center text-secondary">
-          Administrator&apos;s Account(s)
-        </h4>
         <div className="col-12 col-sm-6 col-md-12 bg-primary">
           <div className="col-12 bg-light mb-3 mb-sm-0 p-2">
             <AdminTable choice={adminClick} />
