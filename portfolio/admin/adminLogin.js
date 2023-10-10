@@ -4,22 +4,39 @@ import Image from "next/image";
 import Link from "next/link";
 import "@/node_modules/bootstrap/dist/css/bootstrap.min.css";
 import loginImage from "@/public/portfolios/ai-hacker.jpg";
+import { VALIDATE_LOGIN, PASS_RESET_REQ } from "@/libs/query/adminQueries";
+import { useLazyQuery } from "@apollo/client";
+import NotifyToast from "../toast/NotifyToast";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
 
 function AdminLogin() {
+  const router = useRouter();
   const [loginPage, setLoginPage] = useState(true);
+  
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [resetMail, setResetMail] = useState(null);
   const [animateData, api] = useSpring(() => ({
     from: { x: 0 },
   }));
 
-  useEffect(() => {}, [loginPage]);
+  useEffect(() => {
+    require("bootstrap/dist/js/bootstrap.min");
+  }, []);
 
+  const [validateLogin, { loading }] = useLazyQuery(VALIDATE_LOGIN);
+
+  const [PassResetReq, { loading: passReqLoading }] = useLazyQuery(PASS_RESET_REQ);
+  
   const handleAnimation = () => {
     api.start({
       from: {
         x: 0,
       },
       to: {
-        x: 355,
+        x: 315,
       },
     });
     setLoginPage(!loginPage);
@@ -28,7 +45,7 @@ function AdminLogin() {
   const handleAnimation2 = () => {
     api.start({
       from: {
-        x: 355,
+        x: 315,
       },
       to: {
         x: 0,
@@ -37,6 +54,42 @@ function AdminLogin() {
     setLoginPage(!loginPage);
   };
 
+  const confirmLogin = () => {
+    validateLogin({
+      variables: { email: email, password: password }
+    }).then(({ data, error }) => {
+      if (data && data != null && data != undefined) {
+        router.push("/adminProfile")
+        sessionStorage?.setItem("activeAdminUser", JSON?.stringify(data?.validateUser))
+      }
+
+      if (error != undefined && error?.message) {
+        toast.error(`Validation Failed, ${error?.message}`, {
+          position: toast.POSITION.TOP_LEFT,
+        });
+      }
+    });
+  };
+
+  const resetPassword = () => {
+    PassResetReq({
+      variables: { email: resetMail}
+    }).then(({ data, error }) => {
+      if (data != undefined) {
+        toast.success(`An email containing OTP has been sent to ${data?.passResetReq?.email}`, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      }
+
+      if (error != undefined && error?.message) {
+        toast.error(`Password Reset Failed, ${error?.message}`, {
+          position: toast.POSITION.TOP_LEFT,
+        });
+      }
+    });
+  };
+  
+
   const page = () => {
     if (loginPage === true) {
       return (
@@ -44,11 +97,11 @@ function AdminLogin() {
           style={
             loginPage === true
               ? {
-                  x: animateData.x.to([0, 355], [0, -355]),
-                }
+                x: animateData.x.to([0, 315], [0, -315]),
+              }
               : {
-                  x: animateData.x.to([355, 0], [-355, 0]),
-                }
+                x: animateData.x.to([315, 0], [-315, 0]),
+              }
           }
           className="col-12 col-sm-6 col-md-4 col-lg-3 rounded-end border border-dark-50 port-shadow-8"
         >
@@ -63,12 +116,14 @@ function AdminLogin() {
                 </div>
 
                 {/* Login Data Box */}
-                <form>
+                <form name="loginForm" encType="" onSubmit={confirmLogin}>
                   <div className="mx-2 my-1 px-4 py-5 border border-primary rounded-top rounded-5 port-shadow-11">
                     {/* Email Address Box */}
                     <input
                       type="text"
+                      name="email"
                       className="form-control fs-14 mb-3"
+                      onChange={(e) => setEmail(e.target.value)}
                       placeholder="Email"
                       id="basic-url"
                       aria-describedby="basic-addon3"
@@ -76,15 +131,17 @@ function AdminLogin() {
 
                     {/* Password Box */}
                     <input
-                      type="text"
+                      type="password"
+                      name="password"
+                      onChange={(e) => setPassword(e.target.value)}
                       className="form-control fs-14 mb-3"
                       placeholder="Password"
                       id="basic-url"
                       aria-describedby="basic-addon3"
                     />
 
-                    <div className="row mb-4">
-                      <div className="col-12 col-md-6">
+                    <div className="row mb-2">
+                      <div className="col-12">
                         <input
                           type="checkbox"
                           className="float-start form-check-input mt-1 me-2"
@@ -97,8 +154,26 @@ function AdminLogin() {
                           Remember me
                         </label>
                       </div>
+                    </div>
 
-                      <div className="col-12 col-md-6 fs-12 pt-1">
+                    <div className="justify-content-center">
+                      <button
+                        type="submit"
+                        className="btn text-white btn-primary mx-2 mt-2 port-shadow-11"
+                      // onClick={confirmLogin}
+                      >
+                        Login
+                      </button>
+                      <button
+                        type="reset"
+                        className="btn text-white btn-info mx-2 mt-2 port-shadow-11"
+                      >
+                        Clear
+                      </button>
+                    </div>
+
+                    <div className="row my-2">
+                      <div className="col-12 fs-12 pt-1">
                         <Link
                           href=""
                           onClick={handleAnimation}
@@ -107,21 +182,6 @@ function AdminLogin() {
                           Forget password?
                         </Link>
                       </div>
-                    </div>
-
-                    <div className="justify-content-center">
-                      <button
-                        type="button"
-                        className="btn bg-primary mx-2 mt-2 port-shadow-11"
-                      >
-                        Login
-                      </button>
-                      <button
-                        type="reset"
-                        className="btn bg-info mx-2 mt-2 port-shadow-11"
-                      >
-                        Clear
-                      </button>
                     </div>
                   </div>
                 </form>
@@ -136,11 +196,11 @@ function AdminLogin() {
           style={
             loginPage === true
               ? {
-                  x: animateData.x.to([0, 355], [0, -355]),
-                }
+                x: animateData.x.to([0, 315], [0, -315]),
+              }
               : {
-                  x: animateData.x.to([355, 0], [-355, 0]),
-                }
+                x: animateData.x.to([315, 0], [-315, 0]),
+              }
           }
           className="col-12 col-sm-5 col-md-3 rounded-start border border-dark-50 port-shadow-8"
         >
@@ -153,7 +213,7 @@ function AdminLogin() {
                     Password Reset Page!
                   </h6>
                   {/* Email Address Box */}
-                  <form>
+                  <form encType="" name="resetForm" onSubmit={resetPassword}>
                     <div className="mb-3">
                       <label
                         for="exampleInputEmail1"
@@ -162,7 +222,9 @@ function AdminLogin() {
                         Email address:
                       </label>
                       <input
+                      name="resMail"
                         type="email"
+                        onChange={(e)=> setResetMail(e.target.value)}
                         className="form-control fs-14"
                         id="exampleInputEmail1"
                         aria-describedby="emailHelp"
@@ -172,8 +234,9 @@ function AdminLogin() {
                     <div className="d-flex flex-row justify-content-center">
                       <div className="justify-content-center">
                         <button
-                          type="button"
+                          type="submit"
                           className="btn btn-primary my-3 mx-2 port-shadow-11"
+                          // onClick={}
                         >
                           Reset
                         </button>
@@ -207,11 +270,11 @@ function AdminLogin() {
     }
   };
 
-  console.log(loginPage);
+  if (loading === true)
+    return <NotifyToast message={"Confirming your credentials..."} />;
 
-  useEffect(() => {
-    require("bootstrap/dist/js/bootstrap.min");
-  }, []);
+    if (passReqLoading === true)
+    return <NotifyToast message={"Password Reset In Progress..."} />;
 
   return (
     <div className="container-fluid text-center">

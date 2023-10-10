@@ -18,8 +18,10 @@ import { RiAdminFill } from "react-icons/ri";
 import { FcAssistant } from "react-icons/fc";
 
 import { AiOutlineLogout } from "react-icons/ai";
+import { useRouter } from "next/router";
 
 function Layout({ children, pageTitle }) {
+  const router = useRouter();
   useEffect(() => {
     require("bootstrap/dist/js/bootstrap.min");
   }, []);
@@ -53,15 +55,15 @@ function Layout({ children, pageTitle }) {
       title: "Curriculum Vitae",
     },
     {
-      url: "/adminProfile",
+      url: "/login",
       icon: <RiAdminFill />,
-      title: "Admin",
+      title: "Admin Page",
     },
   ];
 
   const bottomNav = [
     {
-      url: "/login",
+      url: "/adminProfile",
       icon: <MdSettingsSuggest />,
       title: "Settings",
     },
@@ -71,6 +73,11 @@ function Layout({ children, pageTitle }) {
       title: "Logout",
     },
   ];
+
+  const logout = () => {
+    sessionStorage?.removeItem("activeAdminUser")
+    router?.push("/login")
+  }
 
   return (
     <div className="vh-100 overflow-hidden">
@@ -131,7 +138,7 @@ function Layout({ children, pageTitle }) {
               </div>
 
               {/* Side Bar Bottom Navigations */}
-              <div className="row align-items-end">
+              {activeUrl === "/adminProfile" && <div className="row align-items-end">
                 <div className="col-12" />
                 <div className="col-12 pt-4 border-1 border-top border-light">
                   {bottomNav?.map((item, index) => {
@@ -141,6 +148,7 @@ function Layout({ children, pageTitle }) {
                         className="nav-link text-white-50"
                         aria-current="page"
                         href={item.url}
+                        onClick={item.title === "Logout" && logout}
                       >
                         <div className="row">
                           <div
@@ -160,7 +168,8 @@ function Layout({ children, pageTitle }) {
                     );
                   })}
                 </div>
-              </div>
+              </div>}
+
             </div>
           </nav>
         </div>
@@ -216,8 +225,8 @@ function Layout({ children, pageTitle }) {
           {children}
         </div>
         {/* <ToastContainer /> */}
-      </div>
-    </div>
+      </div >
+    </div >
   );
 }
 

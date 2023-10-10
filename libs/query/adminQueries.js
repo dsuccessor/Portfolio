@@ -32,4 +32,37 @@ const BULK_ADD_USERS = gql`
   }
 `;
 
-export { GET_ADMIN, BULK_ADD_USERS };
+const VALIDATE_LOGIN = gql`
+  query validateLogin($email: String! $password: String!){
+    validateUser(email: $email password: $password) {
+      id
+      userId
+      surname
+      otherName
+      email
+      role
+      passport
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+const PASS_RESET_REQ = gql`
+  query PassResetReq($email: String!){
+    passResetReq(email: $email) {
+      id
+      userId
+      surname
+      otherName
+      email
+      role
+      passport
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+
+export { GET_ADMIN, BULK_ADD_USERS, VALIDATE_LOGIN, PASS_RESET_REQ };

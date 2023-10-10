@@ -6,8 +6,10 @@ import Admin from "./Admin";
 import NotifyToast from "./toast/NotifyToast";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PrivateRoute from "./security/PrivateRoute";
 
 function AdminTable({ choice }) {
+
   // Page refresh logic
   const router = useRouter();
   const handleRefresh = () => {
@@ -75,6 +77,7 @@ function AdminTable({ choice }) {
     );
 
   return (
+    <PrivateRoute>
     <div className="container-fluid">
       <div className="row mx-1 mb-2">
         <div className="col-8 col-sm-8 col-md-10 ">
@@ -158,6 +161,7 @@ function AdminTable({ choice }) {
         </table>
       </div>
     </div>
+    </PrivateRoute>
   );
 }
 
