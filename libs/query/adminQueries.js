@@ -64,5 +64,14 @@ const PASS_RESET_REQ = gql`
   }
 `;
 
+const VALIDATE_OTP = gql`
+  query ValiidateOtp($email: String! $otp: String!)
+  {
+    confirmOtp(email: $email otp: $otp) {
+      message
+    }
+  }
+`;
 
-export { GET_ADMIN, BULK_ADD_USERS, VALIDATE_LOGIN, PASS_RESET_REQ };
+
+export { GET_ADMIN, BULK_ADD_USERS, VALIDATE_LOGIN, PASS_RESET_REQ, VALIDATE_OTP };
