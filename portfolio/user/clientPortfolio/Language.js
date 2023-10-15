@@ -25,9 +25,9 @@ function Language() {
         #Programming Languages
       </div>
       <div className="card-body">
-        <div className="row text-start align-items-center">
+        <div className="row text-start align-items-center justify-content-around">
           {/* Progress Bar - Level */}
-          <div className="col-12 col-md-6 pt-3 mb-5 ps-4 mb-lg-0">
+          <div className="col-12 col-md-5 pt-3 mb-5 ps-4 mb-lg-0">
             {data?.getLanguages?.map((item) => {
               return (
                 <div className="row mb-3" key={item?.id}>
@@ -76,11 +76,11 @@ function Language() {
             })}
           </div>
 
-          <div className="col-12 col-md-6 mb-3 mb-lg-0">
+          <div className="col-12 col-md-5 mb-3 mb-lg-0">
             <div className="row row-cols-3 justify-content-center">
               {data?.getLanguages?.map((item) => {
                 return (
-                  <div className="col" key={item?.id}>
+                  <div className="col-4 border-1 bg-info bg-opacity-25 port-shadow-8" key={item?.id}>
                     <div className="text-center mt-4">
                       <Image
                         src={item?.logo}
@@ -88,8 +88,8 @@ function Language() {
                         height={50}
                         alt="logo"
                       />
-                      <div className="mt-3">
-                        <h6 className="nav-link fw-bolder m-0 text-primary">
+                      <div className="mt-3 pb-3">
+                        <h6 className="nav-link fs-13 fw-bolder m-0 text-secondary">
                           {item?.name}
                         </h6>
                       </div>

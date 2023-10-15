@@ -1,29 +1,27 @@
 import { gql } from "@apollo/client";
 
 // Objective Queries
-// const ADD_OBJCTIVE = gql`
-//   mutation AddObj(
-//     $name: String!
-//     $description: String!
-//     $logo: String!
-//     $level: levelOptions!
-//   ) {
-//     addLanguage(
-//       name: $name
-//       description: $description
-//       logo: $logo
-//       level: $level
-//     ) {
-//       id
-//       name
-//       description
-//       logo
-//       level
-//       createdAt
-//       updatedAt
-//     }
-//   }
-// `;
+const ADD_OBJCTIVE = gql`
+  mutation AddObj(
+    $version: String!
+    $summary: String!
+    $logo: String!
+  ) {
+    addObjective(
+      version: $version
+      summary: $summary
+      logo: $logo
+    ) {
+      id
+      version
+      summary
+      logo
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
 const GET_OBJECTIVES = gql`
   query {
     getObjectives {
@@ -36,57 +34,89 @@ const GET_OBJECTIVES = gql`
     }
   }
 `;
-// const GET_LANGUAGE_BY_ID = gql`
-//   query GetLangById($id: ID!) {
-//     getLanguageById(id: $id) {
-//       id
-//       name
-//       description
-//       logo
-//       level
-//       createdAt
-//       updatedAt
-//     }
-//   }
-// `;
-// const DEL_LANGUAGE_BY_ID = gql`
-//   mutation DelLanguageById($id: ID!) {
-//     deleteLanguageById(id: $id) {
-//       id
-//       name
-//       description
-//       logo
-//       level
-//       createdAt
-//       updatedAt
-//     }
-//   }
-// `;
 
-// // Project Queries
-// const ADD_PROJECT = gql`
-//   mutation AddProj(
-//     $name: String!
-//     $description: String!
-//     $flyer: String!
-//     $technologies: [String]!
-//   ) {
-//     addProject(
-//       name: $name
-//       description: $description
-//       flyer: $flyer
-//       technologies: $technologies
-//     ) {
-//       id
-//       name
-//       description
-//       flyer
-//       technologies
-//       createdAt
-//       updatedAt
-//     }
-//   }
-// `;
+const GET_OBJECTIVE_BY_ID = gql`
+  query GetObjById($id: ID!)
+  {
+    getObjectiveById(id: $id)
+    {
+      id
+      version
+      summary
+      logo
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+const DEL_OBJECTIVE_BY_ID = gql`
+  mutation DelObjById($id: ID!)
+  {
+    deleteObjectiveById(id: $id)
+    {
+      id
+      version
+      summary
+      logo
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+const UPD_OBJECTIVE_BY_ID = gql`
+  mutation UpdateObjById(
+    $id: ID!
+    $version: String
+    $summary: String
+    $logo: String
+  ) {
+    updateObjectiveById(
+      id: $id
+      version: $version
+      summary: $summary
+      logo: $logo
+    ) {
+      id
+      version
+      summary
+      logo
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+
+
+// Education Queries
+const ADD_EDUCATION = gql`
+  mutation AddEdu(
+    $school: String!
+    $period: String!
+    $qualification: String!
+    $course: String!
+    $grade: String!
+  ) {
+    addEducation(
+      school: $school
+      period: $period
+      qualification: $qualification
+      course: $course
+      grade: $grade
+    ) {
+      id
+      school
+      period
+      qualification
+      course
+      grade
+      createdAt
+      updatedAt
+    }
+  }
+`;
 
 const GET_EDUCATIONS = gql`
   query {
@@ -103,57 +133,95 @@ const GET_EDUCATIONS = gql`
   }
 `;
 
-// const GET_PROJECT_BY_ID = gql`
-//   query GetProjById($id: ID!) {
-//     getProjectById(id: $id) {
-//       id
-//       name
-//       description
-//       flyer
-//       technologies
-//       createdAt
-//       updatedAt
-//     }
-//   }
-// `;
-// const DEL_PROJECT_BY_ID = gql`
-//   mutation DelProjectById($id: ID!) {
-//     deleteProjectById(id: $id) {
-//       id
-//       name
-//       description
-//       flyer
-//       technologies
-//       createdAt
-//       updatedAt
-//     }
-//   }
-// `;
+const GET_EDUCATION_BY_ID = gql`
+  query GetEduById($id: ID!)
+  {
+    getEducationById(id: $id) 
+    {
+      id
+      school
+      period
+      qualification
+      course
+      grade
+      createdAt
+      updatedAt
+    }
+  }
+`;
 
-// // Skill Queries
-// const ADD_SKILL = gql`
-//   mutation AddSkill(
-//     $name: String!
-//     $description: String!
-//     $logo: String!
-//     $level: levelOptions!
-//   ) {
-//     addSkill(
-//       name: $name
-//       description: $description
-//       logo: $logo
-//       level: $level
-//     ) {
-//       id
-//       name
-//       description
-//       logo
-//       level
-//       createdAt
-//       updatedAt
-//     }
-//   }
-// `;
+const DEL_EDUCATION_BY_ID = gql`
+  mutation DelEduById($id: ID!)
+  {
+    deleteEducationById(id: $id) 
+    {
+      id
+      school
+      period
+      qualification
+      course
+      grade
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+const UPD_EDUCATION_BY_ID = gql`
+  mutation UpdateEduById(
+    $id: ID!
+    $school: String
+    $period: String
+    $qualification: String
+    $course: String
+    $grade: String
+  ) {
+    updateEducationById(
+      id: $id
+      school: $school
+      period: $period
+      qualification: $qualification
+      course: $course
+      grade: $grade
+    ) {
+      id
+      school
+      period
+      qualification
+      course
+      grade
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+
+
+// Experience Queries
+const ADD_EXPERIENCE = gql`
+  mutation AddExp(
+    $organization: String!
+    $role: String!
+    $position: String!
+    $period: String!
+  ) {
+    addExperience(
+      organization: $organization
+      role: $role
+      position: $position
+      period: $period
+    ) {
+      id
+      organization
+      role
+      position
+      period
+      createdAt
+      updatedAt
+    }
+  }
+`;
 
 const GET_EXPERIENCES = gql`
   query {
@@ -169,52 +237,86 @@ const GET_EXPERIENCES = gql`
   }
 `;
 
-// const GET_SKILL_BY_ID = gql`
-//   query GetSkillById($id: ID!) {
-//     getSkillById(id: $id) {
-//       id
-//       name
-//       description
-//       logo
-//       level
-//       createdAt
-//       updatedAt
-//     }
-//   }
-// `;
-// const DEL_SKILL_BY_ID = gql`
-//   mutation DelSkillById($id: ID!) {
-//     deleteSkillById(id: $id) {
-//       id
-//       name
-//       description
-//       logo
-//       level
-//       createdAt
-//       updatedAt
-//     }
-//   }
-// `;
+const GET_EXPERIENCE_BY_ID = gql`
+  query GetExpById($id: ID!) {
+    getExperienceById(id: $id) {
+      id
+      organization
+      role
+      position
+      period
+      createdAt
+      updatedAt
+    }
+  }
+`;
 
-// // Media Queries
-// const ADD_MEDIA = gql`
-//   mutation AddMedia(
-//     $name: String!
-//     $handle: String!
-//     $logo: String!
-//     $link: String!
-//   ) {
-//     addMedia(name: $name, handle: $handle, logo: $logo, link: $link) {
-//       id
-//       name
-//       handle
-//       logo
-//       link
-//       createdAt
-//       updatedAt
-//     }
-//   }
-// `;
+const DEL_EXPERIENCE_BY_ID = gql`
+  mutation DelExpById($id: ID!) {
+    deleteExperienceById(id: $id) {
+      id
+      organization
+      role
+      position
+      period
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+const UPD_EXPERIENCE_BY_ID = gql`
+  mutation UpdateExpById(
+    $id: ID!
+    $organization: String
+    $role: String
+    $position: String
+    $period: String
+  ) {
+    updateExperienceById(
+      id: $id
+      organization: $organization
+      role: $role
+      position: $position
+      period: $period
+    ) {
+      id
+      organization
+      role
+      position
+      period
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+
+
+// Certificate Queries
+const ADD_CERTIFICATE = gql`
+  mutation AddCert(
+    $programme: String!
+    $period: String!
+    $certificate: String!
+    $certification: String!
+  ) {
+    addCertification(
+      programme: $programme
+      period: $period
+      certificate: $certificate
+      certification: $certification
+    ) {
+      id
+      programme
+      period
+      certificate
+      certification
+      createdAt
+      updatedAt
+    }
+  }
+`;
 
 const GET_CERTIFICATES = gql`
   query {
@@ -230,48 +332,80 @@ const GET_CERTIFICATES = gql`
   }
 `;
 
-// const GET_MEDIA_BY_ID = gql`
-//   query GetMediaById($id: ID!) {
-//     getMediaById(id: $id) {
-//       id
-//       name
-//       handle
-//       logo
-//       link
-//       createdAt
-//       updatedAt
-//     }
-//   }
-// `;
-// const DEL_MEDIA_BY_ID = gql`
-//   mutation DelMediaById($id: ID!) {
-//     deleteMediaById(id: $id) {
-//       id
-//       name
-//       handle
-//       logo
-//       link
-//       createdAt
-//       updatedAt
-//     }
-//   }
-// `;
+const GET_CERTIFICATE_BY_ID = gql`
+  query GetCertById($id: ID!){
+    getCertificationById(id: $id) {
+      id
+      programme
+      period
+      certificate
+      certification
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+const DEL_CERTIFICATE_BY_ID = gql`
+  mutation DelCertById($id: ID!){
+    deleteCertificationById(id: $id) {
+      id
+      programme
+      period
+      certificate
+      certification
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+const UPD_CERTIFICATE_BY_ID = gql`
+  mutation UpdateCertById(
+    $id: ID!
+    $programme: String
+    $period: String
+    $certificate: String
+    $certification: String
+  ) {
+    updateCertificateById(
+      id: $id
+      programme: $programme
+      period: $period
+      certificate: $certificate
+      certification: $certification
+    ) {
+      id
+      programme
+      period
+      certificate
+      certification
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
 
 export {
-  GET_OBJECTIVES,
-  //   GET_LANGUAGE_BY_ID,
-  //   ADD_LANGUAGE,
-  //   DEL_LANGUAGE_BY_ID,
-  GET_EDUCATIONS,
-  //   GET_PROJECT_BY_ID,
-  //   ADD_PROJECT,
-  //   DEL_PROJECT_BY_ID,
-  GET_EXPERIENCES,
-  //   GET_SKILL_BY_ID,
-  //   ADD_SKILL,
-  //   DEL_SKILL_BY_ID,
-  GET_CERTIFICATES,
-  //   GET_MEDIA_BY_ID,
-  //   ADD_MEDIA,
-  //   DEL_MEDIA_BY_ID,
+ADD_CERTIFICATE,
+ADD_EDUCATION,
+ADD_EXPERIENCE,
+ADD_OBJCTIVE,
+GET_CERTIFICATES,
+GET_CERTIFICATE_BY_ID,
+GET_EDUCATIONS,
+GET_EDUCATION_BY_ID,
+GET_EXPERIENCES,
+GET_EXPERIENCE_BY_ID,
+GET_OBJECTIVES,
+GET_OBJECTIVE_BY_ID,
+UPD_CERTIFICATE_BY_ID,
+UPD_EDUCATION_BY_ID,
+UPD_EXPERIENCE_BY_ID,
+UPD_OBJECTIVE_BY_ID,
+DEL_CERTIFICATE_BY_ID,
+DEL_EDUCATION_BY_ID,
+DEL_EXPERIENCE_BY_ID,
+DEL_OBJECTIVE_BY_ID,
 };

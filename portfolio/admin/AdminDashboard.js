@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "../layout";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
 import Image from "next/image";
-
 import { client, ApolloProvider } from "@/libs/client";
 
 function AdminDashboard({children, pageTitle}) {
@@ -25,7 +23,7 @@ function AdminDashboard({children, pageTitle}) {
     {
       id: 3,
       name: "Resumee",
-      link: "/",
+      link: "/resumeeAdmin",
     },
     {
       id: 4,
@@ -51,8 +49,10 @@ function AdminDashboard({children, pageTitle}) {
                 <div key={index} className="col-12 col-md-6 col-lg mb-3">
                   <div
                     className={
-                      activeUrl === admin?.link
-                        ? "bg-primary text-primary bg-opacity-25 border-0 rounded-3 port-shadow-8"
+                      activeUrl === "/resumeeAdmin" && activeUrl === admin?.link
+                      ? "bg-info text-white border-0 rounded-3 port-shadow-8" 
+                      : activeUrl === admin?.link
+                        ? "bg-primary text-white border-0 rounded-3 port-shadow-8"
                         : "bg-white text-secondary border-0 rounded-3 port-shadow-8"
                     }
                   >
@@ -68,7 +68,7 @@ function AdminDashboard({children, pageTitle}) {
             })}
           </div>
           <div className="row gx-3 px-2 mt-1">
-          <h4 className="card-title text-secondary text-center">{pageTitle}</h4>
+          <h4 className="card-title fs-14 text-secondary text-center">{pageTitle}</h4>
           {children}
           </div>
         </div>

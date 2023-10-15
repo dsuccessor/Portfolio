@@ -1,3 +1,17 @@
+/* * {
+    font-size: 12px !important;
+} */
+
+.border-radius {
+    border: 2px solid red !important;
+    border-radius: 25px !important;
+}
+
+.border-radius-top {
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+}
+
 .port-shadow-1 {
 box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px !important;
 }

@@ -14,13 +14,13 @@ function ToolTips({ optionButtons }) {
     setTarget(event.target);
   };
   return (
-    <div ref={ref}>
+    <div ref={ref} className="p-0">
       <button
         type="button"
-        className="btn btn-secondary btn-sm py-2 me-2 mt-1"
+        className="btn btn-secondary fs-13 btn-sm py-1 me-1 mt-2"
         onClick={handleClick}
       >
-        Options
+        Actions
       </button>
 
       <Overlay
