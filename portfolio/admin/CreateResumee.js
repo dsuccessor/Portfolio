@@ -7,7 +7,9 @@ import ResumeeTable from "./ResumeeTable";
 import ResumeeForm from "./ResumeeForm";
 
 function CreateResumee() {
-  getAuthToken("loginToken")
+  if (typeof window !== 'undefined') {
+    getAuthToken("loginToken")
+    }
   const [imageClicked, setImageClicked] = useState();
   const [portType, setPortType] = useState();
 

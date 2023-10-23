@@ -7,7 +7,9 @@ import "react-toastify/dist/ReactToastify.css";
 import PortfolioForm from "./PortfolioForm";
 
 function CreatePortfolio() {
-  getAuthToken("loginToken")
+  if (typeof window !== 'undefined') {
+    getAuthToken("loginToken")
+    }
   const [imageClicked, setImageClicked] = useState();
   const [portType, setPortType] = useState();
 

@@ -4,7 +4,9 @@ import { client, ApolloProvider, getAuthToken } from "../libs/client";
 import CreateAdmin from "./CreateAdmin";
 
 function AdminReg() {
-    getAuthToken("loginToken")
+  if (typeof window !== 'undefined') {
+  getAuthToken("loginToken")
+  }
   return (
     <AdminDashboard pageTitle={"Admin Registeration"}>
       <ApolloProvider client={client}>
