@@ -18,6 +18,7 @@ function PasswordResetAuth({animate}) {
           variables: { email: resetMail}
         }).then(({ data, error }) => {
           if (data != undefined) {
+           sessionStorage.setItem("passResetToken", data?.passResetReq?.token)
             router?.push(`/otpValidation?email=${resetMail}`)
             // toast.success(`An email containing OTP has been sent to ${data?.passResetReq?.email}`, {
             //   position: toast.POSITION.TOP_RIGHT,

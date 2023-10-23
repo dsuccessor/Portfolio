@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AdminDashboard from "./AdminDashboard";
-import { client, ApolloProvider } from "../../libs/client";
+import { client, ApolloProvider, getAuthToken } from "../../libs/client";
 import PortfolioTable from "./PortfolioTable";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PortfolioForm from "./PortfolioForm";
 
 function CreatePortfolio() {
+  getAuthToken("loginToken")
   const [imageClicked, setImageClicked] = useState();
   const [portType, setPortType] = useState();
 

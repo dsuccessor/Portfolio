@@ -41,6 +41,7 @@ const VALIDATE_LOGIN = gql`
       otherName
       email
       role
+      token
       passport
       createdAt
       updatedAt
@@ -57,6 +58,7 @@ const PASS_RESET_REQ = gql`
       otherName
       email
       role
+      token
       passport
       createdAt
       updatedAt

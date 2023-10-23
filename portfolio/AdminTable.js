@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
-const { useQuery, useLazyQuery } = require("@apollo/client");
+const { useQuery, useLazyQuery, ApolloError } = require("@apollo/client");
 import { GET_ADMIN, BULK_ADD_USERS } from "../libs/query/adminQueries";
 import Admin from "./Admin";
 import NotifyToast from "./toast/NotifyToast";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PrivateRoute from "./security/PrivateRoute";
+
 
 function AdminTable({ choice }) {
 
@@ -34,7 +35,7 @@ function AdminTable({ choice }) {
     bulkAdmin().then(({ data, error }) => {
       if (data && data != null) {
         toast.success(
-          `Syncronization completed. ${data?.bulkAddUsers?.length} new record synched.`,
+          'Syncronization completed. ' + data?.bulkAddUsers?.length + ' new record synched.',
           {
             position: toast.POSITION.RIGHT,
           }
@@ -47,7 +48,7 @@ function AdminTable({ choice }) {
 
       if (error?.message != undefined) {
         toast.error(
-          `Syncronization failed.\n ${error?.networkError?.result?.errors[0]?.message}`,
+          'Syncronization failed.\n' + error?.networkError?.result?.errors[0]?.message,
           {
             position: toast.POSITION.TOP_LEFT,
           }
@@ -68,13 +69,22 @@ function AdminTable({ choice }) {
   if (loading) return <NotifyToast message={"Syncronizaton in progress..."} />;
 
   // Error for fetch query
-  if (getError)
+  if (getError?.networkError ){
     return toast.error(
-      `Failed to fetch records, ${getError?.networkError?.result?.errors[0]?.message}`,
+      'Failed to fetch records, ' + getError?.networkError?.result?.errors[0]?.message,
       {
         position: toast.POSITION.TOP_LEFT,
       }
     );
+    }
+
+    if (getError?.graphQLErrors ) {
+    return toast('Failed to fetch records, ' + getError?.message,
+    {
+            position: toast.POSITION.TOP_LEFT,
+          }
+
+    )}
 
   return (
     <PrivateRoute>
@@ -96,9 +106,7 @@ function AdminTable({ choice }) {
       </div>
 
       <div className="text-center text-danger fs-5 my-2">
-        {getError &&
-          "Unable to load record: " +
-            getError?.networkError?.result?.errors[0]?.message}
+        {getError && "Unable to load record: " + getError?.networkError?.result?.errors[0]?.message}
       </div>
 
       <div className="row px-3 overflow-scroll">

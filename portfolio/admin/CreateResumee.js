@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import AdminDashboard from "./AdminDashboard";
-import { client, ApolloProvider } from "../../libs/client";
+import { client, ApolloProvider, getAuthToken } from "../../libs/client";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ResumeeTable from "./ResumeeTable";
 import ResumeeForm from "./ResumeeForm";
 
 function CreateResumee() {
+  getAuthToken("loginToken")
   const [imageClicked, setImageClicked] = useState();
   const [portType, setPortType] = useState();
 

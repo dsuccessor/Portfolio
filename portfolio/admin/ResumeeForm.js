@@ -7,7 +7,9 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ADD_CERTIFICATE, ADD_EDUCATION, ADD_EXPERIENCE, ADD_OBJCTIVE, GET_CERTIFICATES, GET_EDUCATIONS, GET_EXPERIENCES, GET_OBJECTIVES } from "@/libs/query/resumeeQueries";
 
+
 function ResumeeForm({ imagePreview, getPort }) {
+
   const [eduFormData, setEduFormData] = useState({
     institution: "",
     period: "",

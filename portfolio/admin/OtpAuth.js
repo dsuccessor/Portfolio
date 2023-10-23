@@ -6,11 +6,13 @@ import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 import AdminLogin from "./adminLogin";
 import { VALIDATE_OTP } from "@/libs/query/adminQueries";
+import { getAuthToken } from "@/libs/client";
 
 function OtpAuth() {
     const router = useRouter()
     const [userOtp, setOtp] = useState(null);
     const [userEmail, setEmail] = useState(null);
+    const [authToken, setAuthToken] = useState(null);
     const [ValiidateOtp, { loading }] = useLazyQuery(VALIDATE_OTP);
 
     useEffect(() => {
@@ -20,25 +22,26 @@ function OtpAuth() {
 
     console.log(userEmail);
 
-    const checkOtp = () => {
+    const checkOtp = async () => {
+      await getAuthToken("passResetToken")
         ValiidateOtp({
             variables: { email: userEmail, otp: userOtp, }
         }).then(({ data, error }) => {
-
             if (data !== undefined && data?.confirmOtp?.message) {
-                toast.success(`Otp ${userOtp} confirmed for ${userEmail}`, {
+                toast.success('Otp ' + userOtp + ' confirmed for ' + userEmail, {
                     position: toast.POSITION.TOP_RIGHT,
                 });
             }
 
             if (error != undefined && error?.message) {
-                toast.error(`Verification failed, ${error?.message}`, {
+                toast.error('Verification failed, ' + error?.message, {
                     position: toast.POSITION.TOP_LEFT,
                 });
             }
         });
     };
-
+    
+    
     if (loading === true)
         return <NotifyToast message={"Confirming OTP Validity..."} />;
 
@@ -111,5 +114,6 @@ function OtpAuth() {
         </AdminLogin>
     )
 }
+
 
 export default OtpAuth

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -40,8 +40,10 @@ function CreateAdmin() {
   };
 
   const [AddAdmin, { loading }] = useMutation(ADD_ADMINS);
+
   if (loading) return <NotifyToast message={"Loading..."} />;
-  const submitAdmin = (e) => {
+
+  const submitAdmin = async(e) => {
     e.preventDefault();
     console.log(formData);
 

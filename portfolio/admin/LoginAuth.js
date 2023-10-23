@@ -22,6 +22,7 @@ function LoginAuth({animate}) {
         }).then(({ data, error }) => {
           if (data && data != null && data != undefined) {
             router.push("/adminProfile")
+            sessionStorage.setItem("loginToken", data?.validateUser?.token)
             sessionStorage?.setItem("activeAdminUser", JSON?.stringify(data?.validateUser))
           }
     

@@ -7,6 +7,7 @@ import { toTitleCase } from "@/libs/titleCase";
 import { FaTrashAlt, FaGetPocket, FaGitAlt } from "react-icons/fa";
 import ToolTips from "../toast/ToolTips";
 import { DEL_CERTIFICATE_BY_ID, DEL_EDUCATION_BY_ID, DEL_EXPERIENCE_BY_ID, DEL_OBJECTIVE_BY_ID, GET_CERTIFICATES, GET_EDUCATIONS, GET_EXPERIENCES, GET_OBJECTIVES } from "@/libs/query/resumeeQueries";
+import { getAuthToken } from "@/libs/client";
 
 function ResumeeTable({ getImageClicked, choosenPort }) {
   const [getQuery, setGetQuery] = useState(GET_EDUCATIONS);
@@ -43,6 +44,7 @@ function ResumeeTable({ getImageClicked, choosenPort }) {
   };
 
   useEffect(() => {
+   
     choosenPort === undefined
       ? setActiveTable("education")
       : setActiveTable(choosenPort);

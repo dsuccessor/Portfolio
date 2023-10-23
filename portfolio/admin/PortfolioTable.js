@@ -25,7 +25,7 @@ function PortfolioTable({ getImageClicked, choosenPort }) {
 
   const [DelLanguageById] = useMutation(delQuery);
 
-  const deletePort = () => {
+  const deletePort = async () => {
     DelLanguageById({
       variables: { id: delId },
       refetchQueries: [{ query: getQuery }],

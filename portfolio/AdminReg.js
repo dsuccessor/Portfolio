@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import AdminDashboard from "./admin/AdminDashboard";
-import { client, ApolloProvider } from "../libs/client";
+import { client, ApolloProvider, getAuthToken } from "../libs/client";
 import CreateAdmin from "./CreateAdmin";
 
 function AdminReg() {
+    getAuthToken("loginToken")
   return (
     <AdminDashboard pageTitle={"Admin Registeration"}>
       <ApolloProvider client={client}>
