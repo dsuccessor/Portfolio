@@ -7,13 +7,14 @@ import { useRouter } from "next/router";
 import AdminLogin from "./adminLogin";
 import { VALIDATE_OTP } from "@/libs/query/adminQueries";
 import { getAuthToken } from "@/libs/client";
+import ChangePassword from "./ChangePassword";
 
 function OtpAuth() {
     const router = useRouter()
     const [userOtp, setOtp] = useState(null);
     const [userEmail, setEmail] = useState(null);
     const [authToken, setAuthToken] = useState(null);
-    const [ValiidateOtp, { loading }] = useLazyQuery(VALIDATE_OTP);
+    const [ValiidateOtp, { loading, data: result }] = useLazyQuery(VALIDATE_OTP);
 
     useEffect(() => {
         setEmail(router?.query?.email)
@@ -47,6 +48,7 @@ function OtpAuth() {
 
     return (
         <AdminLogin>
+        {(result) && <ChangePassword userEmail={userEmail}/>}
             <div className="col-12 col-sm-6 col-md-4 col-lg-3 rounded-end border border-dark-50 port-shadow-8"
             >
                 <div className="card border-0">
@@ -58,7 +60,7 @@ function OtpAuth() {
                                     OTP Authentication Page!
                                 </h6>
                                 {/* OTP Box */}
-                                <form encType="" name="otpForm" onSubmit={()=>checkOtp()}>
+                                <form encType="" method="POST" name="otpForm" onSubmit={()=>checkOtp()}>
                                     <div className="mb-3">
                                         <label
                                             for="exampleInputEmail1"

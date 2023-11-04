@@ -3,7 +3,6 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Layout from "../portfolio/layout";
-// import { client, ApolloProvider } from "./portfolio/client";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Dashboard from "@/portfolio/dashboard";

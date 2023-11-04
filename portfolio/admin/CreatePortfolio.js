@@ -5,6 +5,7 @@ import PortfolioTable from "./PortfolioTable";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PortfolioForm from "./PortfolioForm";
+import { usePathname } from "next/navigation";
 
 function CreatePortfolio() {
   if (typeof window !== 'undefined') {
@@ -12,6 +13,8 @@ function CreatePortfolio() {
     }
   const [imageClicked, setImageClicked] = useState();
   const [portType, setPortType] = useState();
+
+  const activeUrl = usePathname();
 
   const listImage = (data) => {
     setImageClicked(data);
@@ -22,7 +25,7 @@ function CreatePortfolio() {
   };
 
   return (
-    <AdminDashboard pageTitle={"Admin | Portfolio Management"}>
+    <AdminDashboard pageTitle={"Admin | Portfolio Management"} pageUrl={activeUrl}>
       <ApolloProvider client={client}>
         <div className="container-fluid py-1 pe-4">
           <div className="row p-3 border-0 justify-content-center">
@@ -33,8 +36,8 @@ function CreatePortfolio() {
                   ? "Language's Record(s)"
                   : `${portType}'s Record(s)`}
               </h4>
-              <div className="col-12 col-sm-6 col-md-12 bg-info mt-2">
-                <div className="col-12 bg-light mb-3 mb-sm-0 p-3">
+              <div className="col-12 col-sm-6 col-md-12 mt-2">
+                <div className="col-12 bg-transparent mb-3 mb-sm-0 p-3">
                   <PortfolioTable
                     getImageClicked={listImage}
                     choosenPort={portType}

@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { client, ApolloProvider } from "@/libs/client";
 
-function AdminDashboard({children, pageTitle}) {
+function AdminDashboard({children, pageTitle, pageUrl}) {
 
   const activeUrl = usePathname();
 
@@ -38,7 +38,7 @@ function AdminDashboard({children, pageTitle}) {
   ];
 
   return (
-    <Layout pageTitle={"Administrative Dashboard"}>
+    <Layout pageTitle={"Administrative Dashboard"} pageUrl={pageUrl}>
       <ApolloProvider client={client}>
         <div className="container-fluid">
 

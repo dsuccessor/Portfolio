@@ -36,6 +36,7 @@ function PortfolioForm({ imagePreview, getPort }) {
 
   // }, []);
   const [tech, setTech] = useState();
+  const [techie, setTechie] = useState([]);
 
   const [projectFormData, setProjectFormData] = useState({
     name: "",
@@ -129,6 +130,7 @@ function PortfolioForm({ imagePreview, getPort }) {
     <div className="col-12">
       <label htmlFor="exampleInputTechLink" className="form-label">
         {portfolioType === "project" ? "Technology" : "Link"}
+        {(portfolioType === "project" && techie != undefined) && <label className="text-primary">&nbsp;[{techie?.length}]</label>}
       </label>
       <input
         type="text"
@@ -144,13 +146,18 @@ function PortfolioForm({ imagePreview, getPort }) {
         aria-describedby="nameHelp"
       />
       {portfolioType === "project" && (
+        <>
+        <h5 className="my-2 text-primary">
+        {techie.toString() }
+        </h5>
         <button
           type="submit"
-          className="btn btn-primary mt-3"
+          className="btn btn-primary"
           onClick={addTech}
         >
           Add more Tech
         </button>
+        </>
       )}
     </div>
   );
@@ -158,6 +165,7 @@ function PortfolioForm({ imagePreview, getPort }) {
   const addTech = (e) => {
     e.preventDefault();
     projectFormData.technologies = [...projectFormData.technologies, tech];
+    setTechie(projectFormData?.technologies)
     console.log(projectFormData);
   };
 

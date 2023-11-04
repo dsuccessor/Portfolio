@@ -44,7 +44,7 @@ function ResumeeTable({ getImageClicked, choosenPort }) {
   };
 
   useEffect(() => {
-   
+
     choosenPort === undefined
       ? setActiveTable("education")
       : setActiveTable(choosenPort);
@@ -78,7 +78,7 @@ function ResumeeTable({ getImageClicked, choosenPort }) {
         <button
           type="button"
           className="btn btn-primary btn-sm mx-1 pt-0"
-          // onClick={UpdateAdmin}
+        // onClick={UpdateAdmin}
         >
           <FaGetPocket size={12} />
         </button>
@@ -89,135 +89,151 @@ function ResumeeTable({ getImageClicked, choosenPort }) {
   return (
     <div className="row px-3 py-0 mt-0">
       {loading && <NotifyToast message={"Processing, Please wait...."} />}
-    <h4 className="text-center fs-14 text-secondary m-0 pb-2">
-    {choosenPort === undefined
-      ? "Education's Record(s)"
-      : toTitleCase(`${choosenPort}'s Record(s)`)}
-  </h4>
-  
-  {error && <div className="text-center text-danger fs-5"> {error?.message} </div>}
+      <h4 className="text-center fs-14 text-secondary m-0 pb-2">
+        {choosenPort === undefined
+          ? "Education's Record(s)"
+          : toTitleCase(`${choosenPort}'s Record(s)`)}
+      </h4>
 
-      <table className="table table-responsive bg-white table-striped table-hover">
-        <thead className="text-start">
-          <tr className="bg-info opacity-75 text-white">
-            <th className="py-3 ps-3 fs-15" scope="col">
-              Name
-            </th>
-            <th className="py-3 ps-3 fs-15" scope="col">
-              {choosenPort === "media" ? "Handle" : "Description"}
-            </th>
-            <th className="py-3 ps-3 fs-15" scope="col">
-              {choosenPort === "project"
-                ? "Tech"
-                : choosenPort === "media"
-                ? "Link"
-                : "Level"}
-            </th>
-            <th className="py-3 ps-3 fs-15" scope="col">
-              Created
-            </th>
-            <th className="py-3 ps-3 fs-15" scope="col">
-              Updated
-            </th>
-            <th className="py-3" style={{ width: 10 }} scope="col">
-              Action
-            </th>
-          </tr>
-        </thead>
+      <div className="rounded-5 bg-info px-0 pb-0 pt-2">
+        <table className="table rounded-0 table-striped table-hover table-sm m-0">
+          <thead className="">
+            <tr className="text-white">
+              <th className="py-c-4">
+                Name
+              </th>
+               <th className="py-c-4">
+                {choosenPort === "media" ? "Handle" : "Description"}
+              </th>
+               <th className="py-c-4">
+                {choosenPort === "project"
+                  ? "Tech"
+                  : choosenPort === "media"
+                    ? "Link"
+                    : "Level"}
+              </th>
+               <th className="py-c-4">
+                Created
+              </th>
+               <th className="py-c-4">
+                Updated
+              </th>
+              <th className="py-c-4 pe-4">
+                Action
+              </th>
+            </tr>
+          </thead>
 
-        <tbody className="text-start">
-          {choosenPort === "experience"
-            ? data?.getExperiences?.map((item) => {
-                return (
-                  <tr
-                    key={item?.id}
-                    onClick={() => {
-                      //listClick(item?.logo);
-                      getImageClicked(item?.flyer);
-                      setDelId(item?.id);
-                    }}
-                  >
-                    <td className="ps-3 fs-14">{toTitleCase(item?.organization)}</td>
-                    <td className="ps-3 fs-14">{toTitleCase(item?.position)}</td>
-                    <td className="ps-3 fs-14">
-                      {toTitleCase(item?.role)}
-                    </td>
-                    <td className="ps-3 fs-14">{toTitleCase(item?.period)}</td>
-                    <td className="ps-3 fs-14">{item?.updatedAt}</td>
-                    <td style={{ width: 10 }}>
-                      <ToolTips optionButtons={showButtons} />
-                    </td>
-                  </tr>
-                );
-              })
-            : choosenPort === "objective"
-            ? data?.getObjectives?.map((item) => {
-                return (
-                  <tr
-                    key={item?.id}
-                    onClick={() => {
-                      //listClick(item?.logo);
-                      getImageClicked(item?.logo);
-                      setDelId(item?.id);
-                    }}
-                  >
-                    <td className="ps-3 fs-14">{toTitleCase(item?.version)}</td>
-                    <td className="ps-3 fs-14">{toTitleCase(item?.summary)}</td>
-                    <td className="ps-3 fs-14">{item?.logo?.slice(0,10)}</td>
-                    <td className="ps-3 fs-14">{item?.createdAt}</td>
-                    <td className="ps-3 fs-14">{item?.updatedAt}</td>
-                    <td style={{ width: 10 }}>
-                      <ToolTips optionButtons={showButtons} />
-                    </td>
-                  </tr>
-                );
-              })
-            : choosenPort === "certificate"
-            ? data?.getCertifications?.map((item) => {
-                return (
-                  <tr
-                    key={item?.id}
-                    onClick={() => {
-                      //listClick(item?.logo);
-                      getImageClicked(item?.logo);
-                      setDelId(item?.id);
-                    }}
-                  >
-                    <td className="ps-3 fs-14">{toTitleCase(item?.programme)}</td>
-                    <td className="ps-3 fs-14">{toTitleCase(item?.certification)}</td>
-                    <td className="ps-3 fs-14">{item?.certificate?.slice(0, 10)}</td>
-                    <td className="ps-3 fs-14">{item?.period}</td>
-                    <td className="ps-3 fs-14">{item?.updatedAt}</td>
-                    <td style={{ width: 10 }}>
-                      <ToolTips optionButtons={showButtons} />
-                    </td>
-                  </tr>
-                );
-              })
-            : data?.getEducations?.map((item) => {
-                return (
-                  <tr
-                  className="fs-10"
-                    key={item?.id}
-                    onClick={() => {
-                      //listClick(item?.logo);
-                      getImageClicked(item?.logo);
-                      setDelId(item?.id);
-                    }}
-                  >
-                    <td className="ps-3 fs-14">{toTitleCase(item?.school)}</td>
-                    <td className="ps-3 fs-14">{item?.period}</td>
-                    <td className="ps-3 fs-14">{toTitleCase(item?.qualification)}</td>
-                    <td className="ps-3 fs-14">{toTitleCase(item?.course)}</td>
-                    <td className="ps-3 fs-14">{toTitleCase(item?.grade)}</td>
-                    <td style={{ width: 10 }}>
-                      <ToolTips optionButtons={showButtons} />
-                    </td>
-                  </tr>
-                );
-              })}
-        </tbody>
-      </table>
+          {data &&
+            <tbody className="bg-light">
+              {choosenPort === "experience"
+                ? data?.getExperiences?.map((item) => {
+                  return (
+                    <tr
+                      key={item?.id}
+                    >
+                       <td className="py-c-4" onClick={() => {
+                        //listClick(item?.logo);
+                        getImageClicked(item?.flyer);
+                        setDelId(item?.id);
+                      }}>{toTitleCase(item?.organization)}</td>
+                       <td className="py-c-4">{toTitleCase(item?.position)}</td>
+                       <td className="py-c-4">
+                        {toTitleCase(item?.role)}
+                      </td>
+                       <td className="py-c-4">{toTitleCase(item?.period)}</td>
+                       <td className="py-c-4">{item?.updatedAt}</td>
+                      <td style={{ width: 10 }}>
+                        <ToolTips optionButtons={showButtons} />
+                      </td>
+                    </tr>
+                  );
+                })
+                : choosenPort === "objective"
+                  ? data?.getObjectives?.map((item) => {
+                    return (
+                      <tr
+                        key={item?.id}
+                        onClick={() => {
+                          //listClick(item?.logo);
+                          getImageClicked(item?.logo);
+                          setDelId(item?.id);
+                        }}
+                      >
+                         <td className="py-c-4">{toTitleCase(item?.version)}</td>
+                         <td className="py-c-4">{toTitleCase(item?.summary)}</td>
+                         <td className="py-c-4">{item?.logo?.slice(0, 10)}</td>
+                         <td className="py-c-4">{item?.createdAt}</td>
+                         <td className="py-c-4">{item?.updatedAt}</td>
+                        <td style={{ width: 10 }}>
+                          <ToolTips optionButtons={showButtons} />
+                        </td>
+                      </tr>
+                    );
+                  })
+                  : choosenPort === "certificate"
+                    ? data?.getCertifications?.map((item) => {
+                      return (
+                        <tr
+                          key={item?.id}
+                          onClick={() => {
+                            //listClick(item?.logo);
+                            getImageClicked(item?.logo);
+                            setDelId(item?.id);
+                          }}
+                        >
+                           <td className="py-c-4">{toTitleCase(item?.programme)}</td>
+                           <td className="py-c-4">{toTitleCase(item?.certification)}</td>
+                           <td className="py-c-4">{item?.certificate?.slice(0, 10)}</td>
+                           <td className="py-c-4">{item?.period}</td>
+                           <td className="py-c-4">{item?.updatedAt}</td>
+                          <td style={{ width: 10 }}>
+                            <ToolTips optionButtons={showButtons} />
+                          </td>
+                        </tr>
+                      );
+                    })
+                    : data?.getEducations?.map((item) => {
+                      return (
+                        <tr
+                          className="fs-10"
+                          key={item?.id}
+                          onClick={() => {
+                            //listClick(item?.logo);
+                            getImageClicked(item?.logo);
+                            setDelId(item?.id);
+                          }}
+                        >
+                           <td className="py-c-4">{toTitleCase(item?.school)}</td>
+                           <td className="py-c-4">{item?.period}</td>
+                           <td className="py-c-4">{toTitleCase(item?.qualification)}</td>
+                           <td className="py-c-4">{toTitleCase(item?.course)}</td>
+                           <td className="py-c-4">{toTitleCase(item?.grade)}</td>
+                          <td style={{ width: 10 }}>
+                            <ToolTips optionButtons={showButtons} />
+                          </td>
+                        </tr>
+                      );
+                    })}
+            </tbody>
+          }
+
+        </table>
+
+        {
+          error?.graphQLErrors &&
+          <div className="col-12 py-3 bg-light border border-top-0 border border-info">
+            <h4 className="modal-title text-center text-danger fs-3"> {error?.message} </h4>
+          </div>
+        }
+
+        {
+          error?.networkError &&
+          <div className="col-12 py-3 bg-light border border-top-0 border border-info">
+            <h4 className="modal-title text-center text-danger fs-3"> {error?.networkError?.result?.errors[0]?.message} </h4>
+          </div>
+        }
+      </div>
     </div>
   );
 }

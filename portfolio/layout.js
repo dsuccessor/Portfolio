@@ -20,7 +20,7 @@ import { FcAssistant } from "react-icons/fc";
 import { AiOutlineLogout } from "react-icons/ai";
 import { useRouter } from "next/router";
 
-function Layout({ children, pageTitle }) {
+function Layout({ children, pageTitle, pageUrl }) {
   const router = useRouter();
   useEffect(() => {
     require("bootstrap/dist/js/bootstrap.min");
@@ -68,7 +68,7 @@ function Layout({ children, pageTitle }) {
       title: "Settings",
     },
     {
-      url: "/",
+      url: "/login",
       icon: <AiOutlineLogout />,
       title: "Logout",
     },
@@ -138,7 +138,7 @@ function Layout({ children, pageTitle }) {
               </div>
 
               {/* Side Bar Bottom Navigations */}
-              {activeUrl === "/adminProfile" && <div className="row align-items-end">
+              {activeUrl === pageUrl && <div className="row align-items-end">
                 <div className="col-12" />
                 <div className="col-12 pt-4 border-1 border-top border-light">
                   {bottomNav?.map((item, index) => {
@@ -175,7 +175,7 @@ function Layout({ children, pageTitle }) {
         </div>
 
         {/* Content */}
-        <div className="col-12 col-xl-10 bg-light px-0 vh-100 overflow-scroll">
+        <div className="col-12 col-xl-10 bg-tertiary px-0 vh-100 overflow-scroll">
           <nav className="navbar navbar-expand-lg border-bottom bg-white border-2 border-opacity-75 px-3">
             <div className="container-fluid">
               <a className="navbar-brand" href="#">

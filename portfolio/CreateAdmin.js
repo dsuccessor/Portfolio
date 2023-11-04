@@ -284,7 +284,7 @@ function CreateAdmin() {
         </div>
       </form>
       <div className="row p-3 border-0 justify-content-center">
-        <div className="col-12 col-sm-6 col-md-12 bg-primary">
+        <div className="col-12 col-sm-6 col-md-12">
           <div className="col-12 bg-light mb-3 mb-sm-0 p-2">
             <AdminTable choice={adminClick} />
           </div>

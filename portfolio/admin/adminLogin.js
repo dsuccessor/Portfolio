@@ -17,24 +17,23 @@ function AdminLogin({children, loginPage, animateData}) {
     <div className="container-fluid text-center">
       <div className="row g-0 align-items-center vh-100">
         <div className="col-12">
-          <h4 className="card-title py-3 text-primary">
+          <h4 className="card-title fs-3 py-4 text-primary">
             Portfolio Administration
           </h4>
-          <div className="row align-items-center justify-content-center g-0">
+          <div className="row align-items-center justify-content-center gx-3">
             <animated.div
-              style={
-                loginPage === true ? { ...animateData } : { ...animateData }
-              }
-              className="col-12 col-sm-5 col-md-3 p-0 rounded-start"
+              // style={
+              //   loginPage === true ? { ...animateData } : { ...animateData }
+              // }
+              className="col-9 col-sm-7 col-md-5 col-lg-4 bg-primary"
             >
-              <div className="card border-0 m-0 p-0">
-                <div className="card-body m-0 p-0">
+              <div className="card bg-transparent border-0"> 
+                <div className="card-body">
                   <Image
-                    className="card-img-top"
+                    className="rounded-circle card-img-top w-75 port-shadow-11"
                     src={loginImage}
                     quality={100}
-                    width={100}
-                    height={445}
+                    width={200}
                     alt="..."
                   />
                 </div>

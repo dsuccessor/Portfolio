@@ -24,6 +24,7 @@ const ADD_LANGUAGE = gql`
     }
   }
 `;
+
 const GET_LANGUAGES = gql`
   query {
     getLanguages {
@@ -37,6 +38,7 @@ const GET_LANGUAGES = gql`
     }
   }
 `;
+
 const GET_LANGUAGE_BY_ID = gql`
   query GetLangById($id: ID!) {
     getLanguageById(id: $id) {

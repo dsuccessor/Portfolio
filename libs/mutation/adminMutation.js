@@ -64,4 +64,23 @@ const ADD_ADMINS = gql`
   }
 `;
 
-export { DEL_ADMIN, UPDATE_ADMIN, ADD_ADMINS };
+const UPDATE_PASSWORD = gql`
+mutation UpdatePassword(
+  $email: String!
+  $password: String!
+  $newPassword: String!
+) {
+  resetPassword(email: $email, password: $password, newPassword: $newPassword) {
+    id
+    surname
+    otherName
+    email
+    token
+    role
+    createdAt
+    updatedAt
+  }
+}
+`;
+
+export { DEL_ADMIN, UPDATE_ADMIN, ADD_ADMINS, UPDATE_PASSWORD };

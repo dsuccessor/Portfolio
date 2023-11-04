@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ToolTips from "./toast/ToolTips";
 import { toTitleCase } from "@/libs/titleCase";
+import Link from "next/link";
 
 function Admin({ data, listClick }) {
   const [adminDelete] = useMutation(DEL_ADMIN, {
@@ -54,20 +55,17 @@ function Admin({ data, listClick }) {
   };
 
   return (
-    <tr
-      onClick={() => {
+    <tr>
+      <td className="py-c-4 text-primary"  onClick={() => {
         listClick(data?.passport);
-        //console.log(data?.passport);
-      }}
-    >
-      <td className="py-2 ps-3">{data.userId}</td>
-      <td className="py-2 ps-3">{toTitleCase(data.surname)}</td>
-      <td className="py-2 ps-3">{toTitleCase(data.otherName)}</td>
-      <td className="py-2 ps-3">{toTitleCase(data.email)}</td>
-      <td className="py-2 ps-3">{toTitleCase(data.role)}</td>
-      <td className="py-2 ps-3">{data.createdAt}</td>
-      <td className="py-2 ps-3">{data.updatedAt}</td>
-      <td className="pb-2">
+      }}><Link className="text-decoration-none" href="">{data.userId}</Link></td>
+      <td className="py-c-4">{toTitleCase(data.surname)}</td>
+      <td className="py-c-4">{toTitleCase(data.otherName)}</td>
+      <td className="py-c-4">{toTitleCase(data.email)}</td>
+      <td className="py-c-4">{toTitleCase(data.role)}</td>
+      <td className="py-c-4">{data.createdAt}</td>
+      <td className="py-c-4">{data.updatedAt}</td>
+      <td className="align-middle">
         <ToolTips optionButtons={showButtons} />
       </td>
     </tr>

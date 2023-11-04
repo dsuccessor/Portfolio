@@ -21,7 +21,9 @@ function LoginAuth({animate}) {
           variables: { email: email, password: password }
         }).then(({ data, error }) => {
           if (data && data != null && data != undefined) {
-            router.push("/adminProfile")
+            // router.push("/adminProfile")
+            window.location.href = "/adminProfile"
+            // window.location.replace("/adminProfile")
             sessionStorage.setItem("loginToken", data?.validateUser?.token)
             sessionStorage?.setItem("activeAdminUser", JSON?.stringify(data?.validateUser))
           }
@@ -46,13 +48,14 @@ function LoginAuth({animate}) {
         </div>
 
         {/* Login Data Box */}
-        <form name="loginForm" encType="" onSubmit={confirmLogin}>
+        <form name="loginForm" method="POST" encType="">
           <div className="mx-2 my-1 px-4 py-5 border border-primary rounded-top rounded-5 port-shadow-11">
             {/* Email Address Box */}
             <input
               type="text"
               name="email"
               className="form-control fs-14 mb-3"
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email"
               id="basic-url"
@@ -62,6 +65,7 @@ function LoginAuth({animate}) {
             {/* Password Box */}
             <input
               type="password"
+              value={password}
               name="password"
               onChange={(e) => setPassword(e.target.value)}
               className="form-control fs-14 mb-3"
@@ -90,7 +94,7 @@ function LoginAuth({animate}) {
               <button
                 type="submit"
                 className="btn text-white btn-primary mx-2 mt-2 port-shadow-11"
-              // onClick={confirmLogin}
+                onClick={confirmLogin}
               >
                 Login
               </button>
