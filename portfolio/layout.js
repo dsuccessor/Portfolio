@@ -83,7 +83,7 @@ function Layout({ children, pageTitle, pageUrl }) {
     <div className="vh-100 overflow-hidden">
       <div className="row">
         {/* Sidebar */}
-        <div className="d-none d-xl-block col-2 bg-dark px-0 vh-100">
+        <div className="d-none d-xl-block col-2 bg-primary px-0 vh-100">
           <nav className="nav flex-column h-100">
             {/* SideBar Logo */}
             <div className="container h-100">
@@ -112,7 +112,7 @@ function Layout({ children, pageTitle, pageUrl }) {
                         className={
                           activeUrl === item.url
                             ? "nav-link text-light mb-3 border-start border-3 border-light"
-                            : "nav-link mb-3 text-white-50"
+                            : "nav-link mb-3 text-white"
                         }
                         aria-current="page"
                         href={item.url}
@@ -145,7 +145,7 @@ function Layout({ children, pageTitle, pageUrl }) {
                     return (
                       <Link
                         key={index}
-                        className="nav-link text-white-50"
+                        className="nav-link text-white"
                         aria-current="page"
                         href={item.url}
                         onClick={item.title === "Logout" && logout}
@@ -178,7 +178,7 @@ function Layout({ children, pageTitle, pageUrl }) {
         <div className="col-12 col-xl-10 bg-tertiary px-0 vh-100 overflow-scroll">
           <nav className="navbar navbar-expand-lg border-bottom bg-white border-2 border-opacity-75 px-3">
             <div className="container-fluid">
-              <a className="navbar-brand" href="#">
+              <a className="navbar-brand text-primary fw-bold" href="#">
                 {pageTitle}
               </a>
               <button

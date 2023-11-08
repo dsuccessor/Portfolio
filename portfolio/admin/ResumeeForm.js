@@ -702,11 +702,11 @@ function ResumeeForm({ imagePreview, getPort }) {
 
   return (
     <div className="container-fluid">
-      <div className="row justify-content-between pb-3 border-bottom border-1 border-info">
+      <div className="row justify-content-between pb-3 border-bottom border-1 border-primary">
         {resumeeBtn.map((action, index) => {
           return (
-            <div className="col-2 bg-inforounded-3" key={index} >
-              <button type="button" class={action?.id === 1 ? "btn text-white col-12 btn-info py-2" : action?.value === choice ? "btn text-info fw-bold col-12 btn-outline-info py-2" : "btn text-secondary col-12 btn-outline-info py-2"} onClick={() => switchRecord(action)} data-bs-toggle={action?.id === 1 && "modal"} data-bs-target={action?.id === 1 && "#exampleModal"}>
+            <div className="col-2 rounded-3" key={index} >
+              <button type="button" class={action?.id === 1 ? "btn text-white col-12 btn-primary py-2" : action?.value === choice ? "btn text-primary fw-bold col-12 btn-outline-black py-2" : "btn text-black col-12 btn-outline-primary py-2"} onClick={() => switchRecord(action)} data-bs-toggle={action?.id === 1 && "modal"} data-bs-target={action?.id === 1 && "#exampleModal"}>
                 {action.title}
               </button>
             </div>
@@ -717,7 +717,7 @@ function ResumeeForm({ imagePreview, getPort }) {
           <div className="modal modal-lg fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered">
               <div className="modal-content">
-                <div className="modal-header bg-info">
+                <div className="modal-header bg-primary">
                   <h1 className="modal-title fs-16 text-secondary" id="exampleModalLabel">Add new {choice} history to your Resumee</h1>
                   <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>

@@ -32,7 +32,7 @@ function CreateResumee() {
             <ResumeeForm imagePreview={imageClicked} getPort={portChoice} />
             <div className="row pt-3 border-0 justify-content-center">
               <div className="col-12 col-sm-6 col-md-12">
-                <div className="col-12 bg-light px-3">
+                <div className="col-12 bg-transparent px-3">
                   <ResumeeTable
                     getImageClicked={listImage}
                     choosenPort={portType}

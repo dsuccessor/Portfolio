@@ -10,6 +10,7 @@ const GET_ADMIN = gql`
       email
       role
       passport
+      password
       createdAt
       updatedAt
     }

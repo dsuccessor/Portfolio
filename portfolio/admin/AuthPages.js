@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import AdminLogin from './adminLogin';
 import PasswordResetAuth from "./PasswordResetAuth";
 import LoginAuth from "./LoginAuth";
+import LoginScreen from "../login/LoginScreen";
 
 
 function AuthPages() {
@@ -160,24 +161,29 @@ function AuthPages() {
         <>
         <animated.div
           style={animateData}
-          className={loginPage ? "col-9 col-sm-7 col-md-5 col-lg-3" : "d-none col-9 col-sm-7 col-md-5 col-lg-3"}
+          className={loginPage ? "col-8 col-sm-10 col-md-8 col-lg-8" : "d-none col-8 col-sm-10 col-md-6 col-lg-7"}
         >
           <LoginAuth animate={handleAnimation} />
         </animated.div>
 
         <animated.div
           style={animateData1}
-          className={!loginPage ? "col-9 col-sm-7 col-md-5 col-lg-3" : "d-none col-9 col-sm-7 col-md-5 col-lg-3"}
+          className={!loginPage ? "col-8 col-sm-6 col-lg-7" : "d-none col-8 col-sm-6 col-lg-7"}
         >
           <PasswordResetAuth animate={handleAnimation2} />
         </animated.div>
         </>
       );
-    }
+    } 
   return (
-    <AdminLogin loginPage={loginPage} animateData={animateData}>
-      {page()}
-    </AdminLogin>
+  //  <AdminLogin loginPage={loginPage} animateData={animateData}>
+  //    {page()}
+  //  </AdminLogin>
+
+  <LoginScreen>
+  {page()}
+  </LoginScreen>
+ 
   )
 }
 

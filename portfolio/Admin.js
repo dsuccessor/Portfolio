@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 const { useMutation } = require("@apollo/client");
 import { FaTrashAlt, FaGetPocket, FaGitAlt } from "react-icons/fa";
 import { GET_ADMIN } from "../libs/query/adminQueries";
@@ -8,12 +8,16 @@ import "react-toastify/dist/ReactToastify.css";
 import ToolTips from "./toast/ToolTips";
 import { toTitleCase } from "@/libs/titleCase";
 import Link from "next/link";
+import TableData from "./admin/TableData";
 
 function Admin({ data, listClick }) {
   const [adminDelete] = useMutation(DEL_ADMIN, {
     variables: { id: data.id },
     refetchQueries: [{ query: GET_ADMIN }],
   });
+
+  const [getTableRecord, setGetTableRecord] = useState();
+  const [tableRecordModal, setTableRecordModal] = useState(false);
 
   const deleteAdmin = () => {
     adminDelete()
@@ -46,7 +50,7 @@ function Admin({ data, listClick }) {
         <button
           type="button"
           className="btn btn-primary btn-sm mx-2 px-2"
-          // onClick={UpdateAdmin}
+        // onClick={UpdateAdmin}
         >
           <FaGetPocket />
         </button>
@@ -54,9 +58,14 @@ function Admin({ data, listClick }) {
     );
   };
 
+  if (tableRecordModal === true) return <TableData tableData={getTableRecord} />
+
   return (
-    <tr>
-      <td className="py-c-4 text-primary"  onClick={() => {
+    <tr onClick={() => {
+      setGetTableRecord(data)
+      setTableRecordModal(true)
+    }}>
+      <td className="py-c-4 text-primary" onClick={() => {
         listClick(data?.passport);
       }}><Link className="text-decoration-none" href="">{data.userId}</Link></td>
       <td className="py-c-4">{toTitleCase(data.surname)}</td>

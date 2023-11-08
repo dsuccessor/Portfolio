@@ -87,15 +87,19 @@ function ResumeeTable({ getImageClicked, choosenPort }) {
   };
 
   return (
-    <div className="row px-3 py-0 mt-0">
+    <div className="row px-3 py-0 mt-5">
       {loading && <NotifyToast message={"Processing, Please wait...."} />}
-      <h4 className="text-center fs-14 text-secondary m-0 pb-2">
-        {choosenPort === undefined
-          ? "Education's Record(s)"
-          : toTitleCase(`${choosenPort}'s Record(s)`)}
-      </h4>
+      {
+      //   ` <h4 className="text-center fs-14 text-secondary m-0 pb-2">
+      //  {choosenPort === undefined `
+      }
+       {
+    //     `? "Education's Record(s)"
+    //      : toTitleCase(`${choosenPort}'s Record(s)`)}
+    //  </h4>`
+    }
 
-      <div className="rounded-5 bg-info px-0 pb-0 pt-2">
+      <div className="rounded-5 bg-primary px-0 pb-0 pt-2">
         <table className="table rounded-0 table-striped table-hover table-sm m-0">
           <thead className="">
             <tr className="text-white">
@@ -222,14 +226,14 @@ function ResumeeTable({ getImageClicked, choosenPort }) {
 
         {
           error?.graphQLErrors &&
-          <div className="col-12 py-3 bg-light border border-top-0 border border-info">
+          <div className="col-12 py-3 bg-light border border-top-0 border border-primary">
             <h4 className="modal-title text-center text-danger fs-3"> {error?.message} </h4>
           </div>
         }
 
         {
           error?.networkError &&
-          <div className="col-12 py-3 bg-light border border-top-0 border border-info">
+          <div className="col-12 py-3 bg-light border border-top-0 border border-primary">
             <h4 className="modal-title text-center text-danger fs-3"> {error?.networkError?.result?.errors[0]?.message} </h4>
           </div>
         }

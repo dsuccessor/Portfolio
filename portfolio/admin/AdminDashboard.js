@@ -50,7 +50,7 @@ function AdminDashboard({children, pageTitle, pageUrl}) {
                   <div
                     className={
                       activeUrl === "/resumeeAdmin" && activeUrl === admin?.link
-                      ? "bg-info text-white border-0 rounded-3 port-shadow-8" 
+                      ? "bg-primary text-white border-0 rounded-3 port-shadow-8" 
                       : activeUrl === admin?.link
                         ? "bg-primary text-white border-0 rounded-3 port-shadow-8"
                         : "bg-white text-secondary border-0 rounded-3 port-shadow-8"
@@ -67,8 +67,10 @@ function AdminDashboard({children, pageTitle, pageUrl}) {
               );
             })}
           </div>
-          <div className="row gx-3 px-2 mt-1">
-          <h4 className="card-title fs-14 text-secondary text-center">{pageTitle}</h4>
+          <div className="row gx-3 px-2 mt-5">
+          {
+            // `<h4 className="card-title fs-14 text-secondary text-center"> pageTitle </h4>`
+          }
           {children}
           </div>
         </div>
